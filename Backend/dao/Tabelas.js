@@ -113,7 +113,8 @@ class Tabelas {
       const sql = `
       CREATE TABLE IF NOT EXISTS eventos(
         cod INT AUTO_INCREMENT NOT NULL, 
-        nome VARCHAR(200) NOT NULL, 
+        nome VARCHAR(200) NOT NULL,
+        organizador VARCHAR(200) NOT NULL,  
         data DATE NOT NULL,
         imagem LONGBLOB, 
         hora VARCHAR(4) NOT NULL, 
