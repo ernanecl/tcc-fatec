@@ -1,25 +1,30 @@
 class Tabelas {
-  constructor(conexao) {
+  init(conexao) {
     this.conexao = conexao;
+
+    this.criarFuncionarios();
+    this.criarPessoa();
+    this.criarOrganizacao();
+    this.criarContato();
+    this.criarEvento();
   }
 
   //Os campos com mascara serão salvos no banco com mascara?
-  criarFuncionarios() {
+  criarFuncionarios(){
     const sql = `
             CREATE TABLE IF NOT EXISTS funcionarios( 
-                nomeFunc VARCHAR(200) NOT NULL,
-                rgFunc VARCHAR(9) NOT NULL, 
-                cpfFunc VARCHAR(11) NOT NULL, 
-                cargoFunc VARCHAR(100) NOT NULL, 
-                endFunc VARCHAR(150) NOT NULL, 
-                bairroFunc VARCHAR(100) NOT NULL, 
-                cidadeFunc VARCHAR(100) NOT NULL, 
-                cepFunc VARCHAR(8) NOT NULL, 
-                foneFunc VARCHAR(11) NOT NULL, 
-                emailFunc VARCHAR(200) NOT NULL, 
-                senhaFunc VARCHAR(30) NOT NULL
-                PRIMARY KEY(cpfFunc)
-            )
+                nome VARCHAR(200) NOT NULL,
+                rg VARCHAR(9) NOT NULL, 
+                cpf VARCHAR(11) NOT NULL, 
+                cargo VARCHAR(100) NOT NULL, 
+                end VARCHAR(150) NOT NULL, 
+                bairro VARCHAR(100) NOT NULL, 
+                cidade VARCHAR(100) NOT NULL, 
+                cep VARCHAR(8) NOT NULL, 
+                fone VARCHAR(11) NOT NULL, 
+                email VARCHAR(200) NOT NULL, 
+                senha VARCHAR(30) NOT NULL,
+                PRIMARY KEY(cpf))
         `;
     this.conexao.query(sql, (erro) => {
       if (erro) {
@@ -29,20 +34,20 @@ class Tabelas {
       }
     });
   }
-  criarPessoaFisica() {
+  criarPessoa() {
     const sql = `
-            CREATE TABLE IF NOT EXISTS pessoa_fisica(
-                nomePf VARCHAR(200) NOT NULL,
-                endPf VARHCAR(150) NOT NULL,
-                bairroPf VARCHAR(100) NOT NULL, 
-                cidadePf VARCHAR(100) NOT NULL, 
-                cepPf VARCHAR(8) NOT NULL, 
-                fonePf VARCHAR(11) NOT NULL, 
-                emailPf VARCHAR(200) NOT NUL, 
+            CREATE TABLE IF NOT EXISTS pessoa(
+                nome VARCHAR(200) NOT NULL,
+                end VARCHAR(150) NOT NULL,
+                bairro VARCHAR(100) NOT NULL, 
+                cidade VARCHAR(100) NOT NULL, 
+                cep VARCHAR(8) NOT NULL, 
+                fone VARCHAR(11) NOT NULL, 
+                email VARCHAR(200) NOT NULL, 
                 rgPf VARCHAR(9) NOT NULL, 
-                cpfPf VARCHAR(11) NOT NULL,
-                senhaPf VARCHAR(30) NOT NULL, 
-                PRIMARY KEY (cpfPf)
+                cpf VARCHAR(11) NOT NULL,
+                senha VARCHAR(30) NOT NULL, 
+                PRIMARY KEY (cpf)
             )
         `;
 
@@ -50,26 +55,84 @@ class Tabelas {
       if (erro) {
         console.log("Houve um erro " + erro);
       } else {
-        console.log("Tabela pessoa física foi criada!");
+        console.log("Tabela pessoa criada!");
       }
     });
   }
 
-  criarPessoaJuridica(){
+  criarOrganizacao(){
       const sql = `
-        CREATE TABLE IF NOT EXISTS pessoa_juridica(
-                nomePj VARCHAR(200) NOT NULL,
-                endPj VARHCAR(150) NOT NULL,
-                bairroPj VARCHAR(100) NOT NULL, 
-                cidadePj VARCHAR(100) NOT NULL, 
-                cepPj VARCHAR(8) NOT NULL, 
-                fonePj VARCHAR(11) NOT NULL, 
-                emailPj VARCHAR(200) NOT NUL, 
-                cnpjPj VARCHAR(14) NOT NULL,
-                senhaPj VARCHAR(30) NOT NULL, 
+        CREATE TABLE IF NOT EXISTS organizacao(
+                nome VARCHAR(200) NOT NULL,
+                end VARCHAR(150) NOT NULL,
+                bairro VARCHAR(100) NOT NULL, 
+                cidade VARCHAR(100) NOT NULL, 
+                cep VARCHAR(8) NOT NULL,                
+                fone VARCHAR(11) NOT NULL, 
+                email VARCHAR(200) NOT NULL, 
+                cnpj VARCHAR(14) NOT NULL,
+                senha VARCHAR(30) NOT NULL, 
                 finsLucrativos VARCHAR(3) NOT NULL,
-                PRIMARY KEY (cnpjPf)
+                PRIMARY KEY (cnpj)
         )
       `
+      this.conexao.query(sql, (erro) =>{
+        if(erro){
+            console.log("Houve um erro " + erro);
+        }else{
+            console.log("Tabela organização criada!");
+        }
+      });
   }
+
+  criarContato(){
+      const sql = `
+        CREATE TABLE IF NOT EXISTS contato(
+            cod INT AUTO_INCREMENT NOT NULL, 
+            nome VARCHAR(200) NOT NULL, 
+            email VARCHAR(200) NOT NULL, 
+            tel VARCHAR(11) NOT NULL, 
+            msg text NOT NULL, 
+            PRIMARY KEY(cod)
+        )
+      `
+
+      this.conexao.query(sql, (erro)=>{
+        if(erro){
+            console.log("Houve um erro " + erro);
+        }else{
+            console.log("Tabela contato criada!");
+        }
+      });
+  }
+
+    //para que é o campo inscrição?
+    //O que seria o campo termo? 
+  criarEvento(){
+      const sql = `
+      CREATE TABLE IF NOT EXISTS evento(
+        cod INT AUTO_INCREMENT NOT NULL, 
+        nome VARCHAR(200) NOT NULL, 
+        data DATE NOT NULL,
+        hora VARCHAR(4) NOT NULL, 
+        inscricao VARCHAR(3) NOT NULL,  
+        ficha text NOT NULL, 
+        tempo VARCHAR(10) NOT NULL, 
+        descricao text NOT NULL, 
+        categoria VARCHAR(200) NOT NULL, 
+        visibilidade VARCHAR(100) NOT NULL,
+        PRIMARY KEY(cod)
+    )
+      `
+      this.conexao.query(sql, (erro)=>{
+        if(erro){
+            console.log("Houve um erro " + erro);
+        }else{
+            console.log("Tabela evento criada!");
+        }
+      }); 
+  }
+
 }
+
+module.exports = new Tabelas;
