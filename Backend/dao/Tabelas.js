@@ -7,6 +7,7 @@ class Tabelas {
     this.criarOrganizacao();
     this.criarContato();
     this.criarEvento();
+    this.criarInscricao();
   }
 
   //Os campos com mascara serão salvos no banco com mascara?
@@ -24,7 +25,8 @@ class Tabelas {
                 fone VARCHAR(11) NOT NULL, 
                 email VARCHAR(200) NOT NULL, 
                 senha VARCHAR(30) NOT NULL,
-                PRIMARY KEY(cpf))
+                PRIMARY KEY(cpf)
+              )
         `;
     this.conexao.query(sql, (erro) => {
       if (erro) {
@@ -106,14 +108,14 @@ class Tabelas {
       });
   }
 
-    //para que é o campo inscrição?
-    //O que seria o campo termo? 
+  //O que seria o campo termo? 
   criarEvento(){
       const sql = `
-      CREATE TABLE IF NOT EXISTS evento(
+      CREATE TABLE IF NOT EXISTS eventos(
         cod INT AUTO_INCREMENT NOT NULL, 
         nome VARCHAR(200) NOT NULL, 
         data DATE NOT NULL,
+        imagem LONGBLOB, 
         hora VARCHAR(4) NOT NULL, 
         inscricao VARCHAR(3) NOT NULL,  
         ficha text NOT NULL, 
@@ -121,6 +123,7 @@ class Tabelas {
         descricao text NOT NULL, 
         categoria VARCHAR(200) NOT NULL, 
         visibilidade VARCHAR(100) NOT NULL,
+        termo LONGBLOB,
         PRIMARY KEY(cod)
     )
       `
@@ -131,6 +134,24 @@ class Tabelas {
             console.log("Tabela evento criada!");
         }
       }); 
+  }
+
+  criarInscricao(){
+    const sql = `
+      CREATE TABLE IF NOT EXISTS inscricao(
+        cod INT AUTO_INCREMENT NOT NULL, 
+        nome VARCHAR(50) NOT NULL, 
+        nomeEvento VARCHAR(200) NOT NULL, 
+        qtd INT NOT NULL, 
+        preco DECIMAL(6,2) NOT NULL, 
+        dataInicio DATE NOT NULL, 
+        dataFinal DATE NOT NULL, 
+        disponibilidade NOT NULL, 
+        descricao NOT NULL, 
+        PRIMARY KEY (cod),
+        FOREIGN (nomeEvento) REFERENCES eventos(nome)
+      )
+    `
   }
 
 }
