@@ -28,3 +28,5 @@ class EventosDao {
     conexao.query(sql, callback);
   }
 }
+
+module.exports = EventosDao;
