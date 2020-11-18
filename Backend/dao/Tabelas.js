@@ -2,6 +2,7 @@ class Tabelas {
   init(conexao) {
     this.conexao = conexao;
 
+    this.criarUsuario();
     this.criarFuncionarios();
     this.criarPessoa();
     this.criarOrganizacao();
@@ -11,7 +12,7 @@ class Tabelas {
   }
 
   //Os campos com mascara serão salvos no banco com mascara?
-  criarFuncionarios(){
+  criarFuncionarios() {
     const sql = `
             CREATE TABLE IF NOT EXISTS funcionarios( 
                 nome VARCHAR(200) NOT NULL,
@@ -25,7 +26,8 @@ class Tabelas {
                 fone VARCHAR(11) NOT NULL, 
                 email VARCHAR(200) NOT NULL, 
                 senha VARCHAR(30) NOT NULL,
-                PRIMARY KEY(cpf)
+                PRIMARY KEY(cpf),
+                FOREIGN KEY (email) REFERENCES usuarios(email)
               )
         `;
     this.conexao.query(sql, (erro) => {
@@ -49,7 +51,8 @@ class Tabelas {
                 rgPf VARCHAR(9) NOT NULL, 
                 cpf VARCHAR(11) NOT NULL,
                 senha VARCHAR(30) NOT NULL, 
-                PRIMARY KEY (cpf)
+                PRIMARY KEY (cpf),
+                FOREIGN KEY (email) REFERENCES usuarios(email)
             )
         `;
 
@@ -62,8 +65,8 @@ class Tabelas {
     });
   }
 
-  criarOrganizacao(){
-      const sql = `
+  criarOrganizacao() {
+    const sql = `
         CREATE TABLE IF NOT EXISTS organizacao(
                 nome VARCHAR(200) NOT NULL,
                 end VARCHAR(150) NOT NULL,
@@ -75,20 +78,21 @@ class Tabelas {
                 cnpj VARCHAR(14) NOT NULL,
                 senha VARCHAR(30) NOT NULL, 
                 finsLucrativos VARCHAR(3) NOT NULL,
-                PRIMARY KEY (cnpj)
+                PRIMARY KEY (cnpj),
+                FOREIGN KEY (email) REFERENCES usuarios(email)
         )
-      `
-      this.conexao.query(sql, (erro) =>{
-        if(erro){
-            console.log("Houve um erro " + erro);
-        }else{
-            console.log("Tabela organização criada!");
-        }
-      });
+      `;
+    this.conexao.query(sql, (erro) => {
+      if (erro) {
+        console.log("Houve um erro " + erro);
+      } else {
+        console.log("Tabela organização criada!");
+      }
+    });
   }
 
-  criarContato(){
-      const sql = `
+  criarContato() {
+    const sql = `
         CREATE TABLE IF NOT EXISTS contato(
             cod INT AUTO_INCREMENT NOT NULL, 
             nome VARCHAR(200) NOT NULL, 
@@ -97,20 +101,18 @@ class Tabelas {
             msg text NOT NULL, 
             PRIMARY KEY(cod)
         )
-      `
-
-      this.conexao.query(sql, (erro)=>{
-        if(erro){
-            console.log("Houve um erro " + erro);
-        }else{
-            console.log("Tabela contato criada!");
-        }
-      });
+      `;
+    this.conexao.query(sql, (erro) => {
+      if (erro) {
+        console.log("Houve um erro " + erro);
+      } else {
+        console.log("Tabela contato criada!");
+      }
+    });
   }
 
-  //O que seria o campo termo? 
-  criarEvento(){
-      const sql = `
+  criarEvento() {
+    const sql = `
       CREATE TABLE IF NOT EXISTS eventos(
         cod INT AUTO_INCREMENT NOT NULL, 
         nome VARCHAR(200) NOT NULL,
@@ -127,34 +129,70 @@ class Tabelas {
         termo LONGBLOB,
         PRIMARY KEY(cod)
     )
-      `
-      this.conexao.query(sql, (erro)=>{
-        if(erro){
-            console.log("Houve um erro " + erro);
-        }else{
-            console.log("Tabela evento criada!");
-        }
-      }); 
+      `;
+    this.conexao.query(sql, (erro) => {
+      if (erro) {
+        console.log("Houve um erro " + erro);
+      } else {
+        console.log("Tabela evento criada!");
+      }
+    });
   }
 
-  criarInscricao(){
+  criarInscricao() {
     const sql = `
       CREATE TABLE IF NOT EXISTS inscricao(
         cod INT AUTO_INCREMENT NOT NULL, 
-        nome VARCHAR(50) NOT NULL, 
-        nomeEvento VARCHAR(200) NOT NULL, 
-        qtd INT NOT NULL, 
-        preco DECIMAL(6,2) NOT NULL, 
-        dataInicio DATE NOT NULL, 
-        dataFinal DATE NOT NULL, 
-        disponibilidade NOT NULL, 
-        descricao NOT NULL, 
+        nomeEvento VARCHAR(200), 
+        qtd INT, 
+        preco DECIMAL(6,2), 
+        dataInicio DATE, 
+        dataFinal DATE,
+        horaInicio TIME,
+        horaFinal TIME, 
+        disponibilidade VARCHAR(50), 
+        descricao VARCHAR(100), 
         PRIMARY KEY (cod),
-        FOREIGN (nomeEvento) REFERENCES eventos(nome)
+        FOREIGN KEY (cod) REFERENCES eventos(cod)
       )
-    `
+    `;
+    this.conexao.query(sql, (erro) => {
+      if (erro) {
+        console.log(erro);
+      } else {
+        console.log("Tabela inscrição criada!");
+      }
+    });
   }
 
+  criarUsuario() {
+    const sql = `
+      CREATE TABLE IF NOT EXISTS usuarios(
+        email VARCHAR(200) NOT NULL, 
+        senha VARCHAR(30) NOT NULL, 
+        ehFuncionario VARCHAR(3) NOT NULL,
+        PRIMARY KEY (email)
+      )
+    `;
+    this.conexao.query(sql, (erro) => {
+      if (erro) {
+        console.log(erro);
+      } else {
+        console.log("Tabela usuário criada!");
+      }
+    });
+  }
+
+  criarCalendario() {
+    const sql = `
+      CREATE TABLE IF NOT EXISTS calendario(
+      nomeEvento VARCHAR(200) NOT NULL, 
+      descricaoEvento VARCHAR(30) NOT NULL, 
+      data DATE NOT NULL,
+      hora 
+    )
+    `;
+  }
 }
 
-module.exports = new Tabelas;
+module.exports = new Tabelas();
