@@ -1,5 +1,7 @@
 const EventosController = require ('../controller/EventosController');
 
+//Essas rotas ainda não estão funcionando
+
 const router = Router();
 const eventos = new EventosController();
 

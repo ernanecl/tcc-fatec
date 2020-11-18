@@ -1,11 +1,12 @@
-const router = Router();
+const express = require('express');
+const router = express.Router();
 const FuncionarioController = require('../controller/FuncionariosController');
 const Funcionario = require('../model/Funcionario')
+const rotas = new Funcionario().rotas();
 
 const funcionarioController = new FuncionarioController();
+    
+router.post(rotas.cadastro, Funcionario.validacoes(),funcionarioController.cadastro);
 
-//Qual é o mecanismo de busca do funcionário?
-    router.route('/funcionarios/cadastro')
-        .post(Funcionario.validacoes(),funcionarioController.cadastro);
-    router.route()
-        .get();
+//exportando o router
+module.exports = router;

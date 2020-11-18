@@ -11,7 +11,7 @@ class Tabelas {
     this.criarInscricao();
   }
 
-  //Os campos com mascara serão salvos no banco com mascara?
+  
   criarFuncionarios() {
     const sql = `
             CREATE TABLE IF NOT EXISTS funcionarios( 

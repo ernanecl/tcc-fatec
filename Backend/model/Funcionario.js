@@ -2,6 +2,13 @@ const { check } = require('express-validator');
 
 class Funcionario{
 
+    rotas(){
+        return {
+            cadastro: '/funcionarios/cadastro'
+        }   
+    }
+
+    //criando as validações
     static validacoes(){
 
         return [

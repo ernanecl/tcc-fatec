@@ -21,6 +21,7 @@ class EventosController{
     listaData(req, res){
         const data = req.params.data;
 
+        //usando o moment para formatar a data recebida
         data = moment(data, "DD-MM-YYYY").format("YYYY-MM-DD");
         eventosDao.listaPorData(data, (erro, resultado)=>{
             if(erro){
@@ -32,6 +33,7 @@ class EventosController{
             }
         });
     }
+    
     listaOrganizador(req, res){
         const organizador = req.params.organizador;
 
