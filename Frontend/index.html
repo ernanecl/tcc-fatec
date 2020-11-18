@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Minha Página</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link href="css/all.css" rel="stylesheet">
+
+    <!-- import do JQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+   
+
+    <!-- import do CSS-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css"/>
+
+    <!-- Minha folha de estilo -->
+    <link href="css/estilo.css" rel="stylesheet">
+
+    <!-- Favicon da pag -->
+    <link href="img/favicon.png" rel="shortcut icon">
+</head>
+
+<body>
+    <!-- Início Menu -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <img src="img/logo.png" style="width: 60px;" class="nav-link" href="https://www.db-tour.com/"></a>
+            </li>
+            <li class="mt-2">
+                <i class="fas fa-home fa-2x mr-3 text-danger"></i>
+            </li>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar um evento" aria-label="Search" size="50">
+            </form>
+            <li class="nav-item active">
+              <a class="nav-link text-danger" href="#">Início <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="https://www.db-tour.com/">Contato</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="https://twitter.com/dragonballsuper">Eventos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="https://twitter.com/dragonballsuper">Sobre nós</a>
+            </li>
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn_login_cadas my-2 my-sm-0 trigger-btn" data-toggle="modal" data-target="#myModal">
+    LOGIN/CADASTRAR
+  </button>
+  
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade esti">
+    <div class="modal-dialog modal-login modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">				
+                <h4 class="modal-title">Já é cadastrado?<br>
+                <small>Faça seu login e boa navegação</small></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="label">E-mail</label>
+                        <input type="text" class="form-control" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="label">Senha</label>
+                        <input type="password" class="form-control mb-3" required="required">
+                        <input type="submit" class="btn btn-primary btn-block btn-lg mb-3" value="Login">
+                        <small>Esqueceu a senha? <a href="#">Clique aqui</a></small>			
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p>Não possui conta<a href="#"> Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+</div>     
+
+    </nav>
+
+    <!-- Fim do menu -->
+     
+    <!-- Seção 2 -->
+    <header>
+        <div class="container text-center text-dark">
+            <h1 class="mb-3">Eventos</h1>
+            <p class="lead">
+                Centro cultural com os melhores eventos da cidade 
+            </p>
+
+            <!-- Início Cards -->
+            <div class="row">
+                <div class="col-2">
+                    <div class="card text-dark border-light">
+                        <img src="img/i1.jpg" class="card-img-top rounded-circle circle-image">
+                        <div class="card-body">
+                            <h5 class="card-title">C. Cultural</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card text-dark border-light">
+                        <img src="img/i2.jpg" class="card-img-top rounded-circle circle-image">
+                        <div class="card-body">
+                            <h5 class="card-title">Teatro</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card text-dark border-light">
+                        <img src="img/i3.jpeg" class="card-img-top rounded-circle circle-image">
+                        <div class="card-body">
+                            <h5 class="card-title">Dança</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card text-dark border-light">
+                        <img src="img/i4.jpg" class="card-img-top rounded-circle circle-image">
+                        <div class="card-body">
+                            <h5 class="card-title">Stand Up</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card text-dark border-light">
+                        <img src="img/i5.jpg" class="card-img-top rounded-circle circle-image">
+                        <div class="card-body">
+                            <h5 class="card-title">Palestra</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <div class="card text-dark border-light">
+                        <img src="img/1.png" class="card-img-top rounded-circle circle-image">
+                        <div class="card-body">
+                            <h5 class="card-title">Outros</h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Fim Cards -->
+
+            <!--Inicio do carousel-->
+            <div>
+                <div class = "carousel">
+                    <img class="slide"src="img/3.png">
+                    <img class="slide" src="img/3.png">
+                    <img class="slide" src="img/3.png">
+                    <img class="slide" src="img/3.png">
+                    <img class="slide" src="img/3.png">
+                    <img class="slide" src="img/3.png">
+                    <img class="slide" src="img/3.png">
+                </div>
+                <div id="arrow-prev" class="arrow"></div>
+                <div id="arrow-next" class="arrow"></div>
+            </div>
+        </div>
+    </header>
+    <!-- Fim Seção 2 -->
+
+    <!-- Seção 3 -->
+    <section class="text-center text-dark">
+        <div class="container text-center text-dark">
+            <h1 class="mb-3">Sobre o teatro TUPEC</h1>
+            <p class="lead">
+                Centro cultural com os melhores eventos da cidade 
+            </p>
+        </div>
+
+        <!-- Card com informação da história do teatro -->
+        <div class="container-fluid">
+            <div class="card">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-header text-left">
+                            Teatro TUPEC
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4 my-3">
+                        <img src="img/i1.jpg" class="card-img-top " style="height: 90px; width: 184px;">
+                    </div>
+                    <div class="col-8 my-3 text-left">
+                        <b><p class="text-center text-danger">História</p></b>
+                        <p class="text-center lead">
+                            Em Junho do ano 2000, foi inaugurado o teatro TUPEC
+                            que permitiu  que a realização de eventos culturais,
+                            tivessem um espaço na cidade de Mogi Guaçu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fim Seção 3 -->
+
+    <!-- Seção 4 -->
+    <section class="text-center text-dark">
+        <div class="container">
+            <h1 class="mb-3">Contato</h1>
+            <p class="lead">
+                Preencha todos os campos e nos envie sua dúvida, crítica ou sugestão 
+            </p>
+        </div>
+
+        <!-- Criando area de contato --> 
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" name="email" class="form-control" placeholder="Digite seu nome" 
+                    required>
+                    <br>
+                    <input type="email" name="senha" class="form-control" placeholder="Digite seu E-mail" 
+                    required>
+                    <br>
+                    <input type="password" name="senha" class="form-control" placeholder="Digite seu telefone" 
+                    required>
+                </div>
+                
+                <div class="col-6">
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"
+                        placeholder="Digite sua mensagem"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg" data-nome="enviar">
+                ENVIAR
+            </button>
+        </div>
+
+    </section>
+    <!-- Fim seção 4 -->
+
+    <!-- Seção 5 -->
+    <!-- Rodapé -->
+
+    <footer class="background_rosa">
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <div class="row text-light">
+            <div class="col-6">
+                <img src="img/logo.png" class="card-img-top " style="height: 90px; width: 80px;">
+            </div>
+    
+                <div class="col-6 text-right">
+                    <div class="display-4">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </div>
+        </div>
+    </footer>
+
+    <!-- Fim seção 5 -->
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src='./carousel.js'></script>
+
+</body>
+</html>

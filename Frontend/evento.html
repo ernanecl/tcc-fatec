@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Evento</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link href="css/all.css" rel="stylesheet">
+
+    <!-- Minha folha de estilo -->
+    <link href="css/estilo.css" rel="stylesheet">
+
+    <!-- Favicon da pag -->
+    <link href="img/favicon.png" rel="shortcut icon">
+
+    <style>
+        /*Estilizando Imagem de capa*/
+        .bg-img
+        {
+          padding: 200px 0;
+          background-image: url('img/ph2.jpg');
+          background-size: cover !important;
+          background-position: height: 100px; ;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+        }
+      </style>
+</head>
+
+<body>
+    <!-- Início Menu -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <img src="img/logo.png" style="width: 60px;" class="nav-link" href="https://www.db-tour.com/"></a>
+            </li>
+            <li class="mt-2">
+                <i class="fas fa-home fa-2x mr-3 text-danger"></i>
+            </li>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar um evento" aria-label="Search" size="50">
+            </form>
+            <li class="nav-item active">
+              <a class="nav-link text-danger" href="#">Início <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="https://www.db-tour.com/">Contato</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="https://twitter.com/dragonballsuper">Eventos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="https://twitter.com/dragonballsuper">Sobre nós</a>
+            </li>
+            
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn_login_cadas my-2 my-sm-0 trigger-btn" data-toggle="modal" data-target="#myModal">
+    LOGIN/CADASTRAR
+  </button>
+  
+  <!-- Modal HTML -->
+  <div id="myModal" class="modal fade esti">
+    <div class="modal-dialog modal-login modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">				
+                <h4 class="modal-title">Já é cadastrado?<br>
+                <small>Faça seu login e boa navegação</small></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="label">E-mail</label>
+                        <input type="text" class="form-control" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="label">Senha</label>
+                        <input type="password" class="form-control mb-3" required="required">
+                        <input type="submit" class="btn btn-primary btn-block btn-lg mb-3" value="Login">
+                        <small>Esqueceu a senha? <a href="#">Clique aqui</a></small>			
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p>Não possui conta<a href="#"> Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+</div>     
+
+    </nav>
+
+    <div class="container-fluid">
+        <div class="bg-img text-center">
+            
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h1>Musical O fantasma da ópera</h1>
+                <p>Data e Horário</p>
+                <p>Local e tipo do evento</p>
+            </div>
+                <div class="col-6">
+                    <h1>Dados dos organizadores</h1>
+                    <p>Site e dados do contato</p>
+                    <p>Breve descrição e ramo da organização</p>
+                </div>
+        </div>
+    
+    </div>
+
+    <footer class="background_rosa">
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <div class="row text-light">
+            <div class="col-6">
+                <img src="img/logo.png" class="card-img-top " style="height: 90px; width: 80px;">
+            </div>
+    
+                <div class="col-6 text-right">
+                    <div class="display-4">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </div>
+        </div>
+    </footer>
+</body>
+</html>

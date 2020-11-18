@@ -1,0 +1,635 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Agendamento</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link href="css/all.css" rel="stylesheet">
+
+    <!-- Minha folha de estilo -->
+    <link href="css/estilo.css" rel="stylesheet">
+
+    <!-- Favicon da pag -->
+    <link href="img/favicon.png" rel="shortcut icon">
+</head>
+
+<body>
+
+    <!-- Início Menu de navegação -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <img src="img/logo.png" style="width: 60px;" class="nav-link" href="https://www.db-tour.com/"></a>
+            </li>
+            <li class="mt-2">
+                <i class="fas fa-home fa-2x mr-3 text-danger"></i>
+            </li>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar um evento" aria-label="Search" size="50">
+            </form>
+            <li class="nav-item active">
+              <a class="nav-link text-danger" href="#">Início <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="https://www.db-tour.com/">Contato</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="https://twitter.com/dragonballsuper">Eventos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="https://twitter.com/dragonballsuper">Sobre nós</a>
+            </li>
+            
+          </ul>
+          
+          <form class="form-inline my-2 my-lg-0">
+            <!-- Button trigger modal -->
+                <button type="button" class="btn btn_login_cadas my-2 my-sm-0 trigger-btn" data-toggle="modal" data-target="#myModal">
+                    LOGIN/CADASTRAR
+                </button>
+  
+            <!-- Modal HTML -->
+            <div id="myModal" class="modal fade esti">
+                <div class="modal-dialog modal-login modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">				
+                            <h4 class="modal-title">Já é cadastrado?<br>
+                            <small>Faça seu login e boa navegação</small></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="label">E-mail</label>
+                                    <input type="text" class="form-control" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <label for="label">Senha</label>
+                                    <input type="password" class="form-control mb-3" required="required">
+                                    <input type="submit" class="btn btn-primary btn-block btn-lg mb-3" value="Login">
+                                    <small>Esqueceu a senha? <a href="#">Clique aqui</a></small>			
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <p>Não possui conta<a href="#"> Cadastre-se</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+
+    </nav>
+    <!-- Fim Menu de navegação -->
+
+    <!-- Início criar evento -->
+    <div class="container-fluid cor_1">
+        <div class="input-group mt-4">
+            <h4 class="text-left text-light pt-4 ml-4">CRIAR EVENTO</h4>
+            <button class="btn btn-primary ml-5 mt-3">Eventos</button>
+            <button class="btn btn-primary ml-5 mt-3">Centro Cultural</button>
+            <button class="btn btn-primary ml-5 mt-3">Calendário</button>
+        </div>
+    </div>
+    <!-- Fim criar evento -->
+    
+    <!-- Início do container -->
+    <div class="container">
+
+        <!-- Início 1. Dados do evento -->
+        <div class="row"> 
+            <div class="col-12">
+                <div class="card mb-5 mt-3" style="border-color: black;">
+                    <div class="card-header bg-light" style="border-bottom: transparent;"">
+                        <h3>1. Dados do evento</h3>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label>Nome do evento *</label><br>
+                                        <input type="text" class="form-control form-control-lg">
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <label for="label">
+                                            Imagem do evento (opcional)<br>
+                                        </label>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <img src="img/1.png" class="mt-2" style="height: 200px;">
+                                            </div>
+                                            <div class="col-6 text-left">
+                                            Use uma imagem de divulgação com as principais informações<br> 
+                                            do evento Formato JPG ou PNG.<br>
+                                            Máximo 2MB.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <!-- Fim 1. Dados do evento -->
+
+        <!-- Início 2. Quando o correrá o evento? -->
+        <div class="card mb-5 mt-3" style="border-color: black;">
+            <div class="card-header bg-light" style="border-bottom: transparent;"">
+                <h3>2. Quando ocorrerá o evento?</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Data de início *</label>
+                                    <div class="input-group">
+                                        <i class="far fa-calendar fa-lg my-3"></i>
+                                        <input type="text" class="form-control form-control-lg ml-2"
+                                        placeholder="dd/mm/aaaa">
+                                    </div> 
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Hora de início *</label>
+                                    <div class="input-group">
+                                        <i class="far fa-clock fa-lg my-3"></i>
+                                        <input type="text" class="form-control form-control-lg ml-2"
+                                        placeholder="hh:mm">
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Data de término *</label>
+                                    <div class="input-group">
+                                        <i class="far fa-calendar fa-lg my-3"></i>
+                                        <input type="text" class="form-control form-control-lg ml-2"
+                                        placeholder="dd/mm/aaaa">
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Hora de término *</label>
+                                    <div class="input-group">
+                                        <i class="far fa-clock fa-lg my-3"></i>
+                                        <input type="text" class="form-control form-control-lg ml-2"
+                                        placeholder="hh:mm">
+                                    </div>
+                            </div>
+                        </div>
+                            
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Fim 2. Quando correrá o evento -->
+
+        <!-- Início 3. Ingressos -->
+        <div class="card mb-5 mt-3" style="border-color: black;">
+            <div class="card-header bg-light" style="border-bottom: transparent;"">
+                <h3>3. Ingressos</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="text-center">Qual tipo de ingresso usado para o evento?</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                                
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <a  href="#" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#myModal2">+ INGRESSO PAGO</a>
+                                <!-- Modal HTML -->
+                                <div id="myModal2" class="modal fade esti">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">				
+                                                <h4 class="modal-title">
+                                                    Criar ingresso pago
+                                                </h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <form action="" method="post">
+                                                            <div class="form-group">
+                                                                <label for="label">Nome do evento *</label>
+                                                                <input type="text" class="form-control" 
+                                                                placeholder="Ingresso único, meia entrada, etc" required="required">
+                                                            </div>
+                                                        </form>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <form action="" method="post">
+                                                                    <div class="form-group">
+                                                                        <h4 class="mt-4">Periodo da retirada de ingresso</h4>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>       
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <label for="label">Data de início</label>    
+                                                                    <div class="input-group">
+                                                                        <i class="far fa-calendar fa-lg my-3"></i>
+                                                                            <input type="text" class="form-control form-control-lg ml-2"
+                                                                            placeholder="dd/mm/aaaa">
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label for="label" class="mt-4">Hora de início</label>    
+                                                                    <div class="input-group">
+                                                                            <i class="far fa-clock fa-lg my-3"></i>
+                                                                            <input type="text" class="form-control form-control-lg ml-2"
+                                                                            placeholder="hh:mm">
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <h4 class="mt-4">Disponibilidade do ingresso *</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <form action="">
+                                                                    <input type="radio" id="publico" name="gender" value="publico">
+                                                                    <label for="publico">Todo o público</label><br>
+                                                                    <input type="radio" id="privado" name="gender" value="privado">
+                                                                    <label for="privado">Restrito para convidados</label><br>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <form action="" method="post">
+                                                                    <div class="form-group">
+                                                                        <label for="label">Quantidade *</label>
+                                                                        <input type="text" class="form-control" 
+                                                                        placeholder="Ex. 150" required="required">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <form action="" method="post">
+                                                                    <div class="form-group">
+                                                                        <label for="label">Preço *</label>
+                                                                        <input type="text" class="form-control" 
+                                                                        placeholder="R$ 50,00" required="required">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <!-- Espaço vázio -->
+                                                                <form action="" method="post">
+                                                                    <div class="form-group">
+                                                                        <br><br>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <label for="label">Data de término</label>    
+                                                                    <div class="input-group">
+                                                                        <i class="far fa-calendar fa-lg my-3"></i>
+                                                                            <input type="text" class="form-control form-control-lg ml-2"
+                                                                            placeholder="dd/mm/aaaa">
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label for="label" class="mt-4">Hora de término</label>    
+                                                                    <div class="input-group">
+                                                                            <i class="far fa-clock fa-lg my-3"></i>
+                                                                            <input type="text" class="form-control form-control-lg ml-2"
+                                                                            placeholder="hh:mm">
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <br><br><br>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"
+                                                                    placeholder="Informações adicionais Ex: Esse ingresso dá direito à um assento para o evento" style="height: 55px;"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-primary">Cancelar</button>
+                                                            <button class="btn btn-primary">Criar ingresso</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>     
+                            </div><!--Acaba aqui-->
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <a  href="#" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#myModal3">+ INGRESSO GRATUITO</a>
+                                <!-- Modal HTML -->
+                                <div id="myModal3" class="modal fade esti">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">				
+                                                <h4 class="modal-title">
+                                                    Criar ingresso gratuito
+                                                </h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <form action="" method="post">
+                                                            <div class="form-group">
+                                                                <label for="label">Nome do evento *</label>
+                                                                <input type="text" class="form-control" 
+                                                                placeholder="Ingresso único, meia entrada, etc" required="required">
+                                                            </div>
+                                                        </form>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <form action="" method="post">
+                                                                    <div class="form-group">
+                                                                        <h4 class="mt-4">Periodo da retirada de ingresso</h4>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>       
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <label for="label">Data de início</label>    
+                                                                    <div class="input-group">
+                                                                        <i class="far fa-calendar fa-lg my-3"></i>
+                                                                            <input type="text" class="form-control form-control-lg ml-2"
+                                                                            placeholder="dd/mm/aaaa">
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label for="label" class="mt-4">Hora de início</label>    
+                                                                    <div class="input-group">
+                                                                            <i class="far fa-clock fa-lg my-3"></i>
+                                                                            <input type="text" class="form-control form-control-lg ml-2"
+                                                                            placeholder="hh:mm">
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <h4 class="mt-4">Disponibilidade do ingresso *</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <form action="">
+                                                                    <input type="radio" id="publico" name="gender" value="publico">
+                                                                    <label for="publico">Todo o público</label><br>
+                                                                    <input type="radio" id="privado" name="gender" value="privado">
+                                                                    <label for="privado">Restrito para convidados</label><br>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <form action="" method="post">
+                                                                    <div class="form-group">
+                                                                        <label for="label">Quantidade *</label>
+                                                                        <input type="text" class="form-control" 
+                                                                        placeholder="Ex. 150" required="required">
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <!-- Espaço vázio -->
+                                                                <form action="" method="post">
+                                                                    <div class="form-group">
+                                                                        <br><br>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <label for="label">Data de término</label>    
+                                                                    <div class="input-group">
+                                                                        <i class="far fa-calendar fa-lg my-3"></i>
+                                                                            <input type="text" class="form-control form-control-lg ml-2"
+                                                                            placeholder="dd/mm/aaaa">
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label for="label" class="mt-4">Hora de término</label>    
+                                                                    <div class="input-group">
+                                                                            <i class="far fa-clock fa-lg my-3"></i>
+                                                                            <input type="text" class="form-control form-control-lg ml-2"
+                                                                            placeholder="hh:mm">
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <br><br><br>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"
+                                                                    placeholder="Informações adicionais Ex: Esse ingresso dá direito à um assento para o evento" style="height: 55px;"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-primary">Cancelar</button>
+                                                            <button class="btn btn-primary">Criar ingresso</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>     
+                            </div><!--Acaba aqui-->
+                        </div>
+                        <div class="col-3">
+                                
+                        </div> 
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Fim 3. Ingressos -->
+
+        <!-- Início 4. Descrição do evento -->
+        <div class="card mb-5 mt-3" style="border-color: black;">
+            <div class="card-header bg-light" style="border-bottom: transparent;"">
+                <h3>4. Descrição do evento</h3>
+                A descrição do evento tem que constar como obrigatoriedade os seguintes itens:<br>
+                -Ficha técnica<br>
+                -Tempo de duração<br>
+                -Informações mais detalhadas do evento
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"
+                                placeholder="Digite a descrição do evento"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Fim 4. Descrição do evento -->
+
+        <!-- 5. Início Outras definições -->
+        <div class="card mb-5 mt-3" style="border-color: black;">
+            <div class="card-header bg-light" style="border-bottom: transparent;"">
+                <h3>5. Outras definições</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-3">
+                            Categoria do evento *
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" style="border-color: black;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Selecione uma categoria
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <a class="dropdown-item" href="#">Action</a>
+                                      <a class="dropdown-item" href="#">Another action</a>
+                                      <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-3  ml-4">
+                            Nomenclatura
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" style="border-color: black;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Ingresso
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                                      <a class="dropdown-item" href="#">Pago</a>
+                                      <a class="dropdown-item" href="#">Gratuito</a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="input-group mt-4">
+                                Visibilidade do evento:
+                                <label class="radio-inline">
+                                    <input type="radio" name="optradio" class="ml-3">Público
+                                    <input type="radio" name="optradio" class="ml-3">Privado
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Fim 5. Outras definições -->
+
+        <!-- Início 6. Responsabilidades -->
+        <div class="card mb-5 mt-3" style="border-color: black;">
+            <div class="card-header bg-light" style="border-bottom: transparent;"">
+                <h3>6. Responsabilidades</h3>
+            </div>
+            <div class="card-body">
+                <form>
+                    <input type="checkbox" class="form-check-input ml-0" checked>
+                    <label class="ml-3">
+                        Ao registrar o evento, estou de acordo com os <a href="#">Termos de uso </a>
+                        e <a href="#">demais acordos.</a>
+                    </label>
+                </form>
+            </div>
+        </div>
+        <!-- Início 6. Responsabilidades -->
+
+    </div>
+    <!-- Fim do container -->
+
+    <footer class="background_rosa">
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <div class="row text-light">
+            <div class="col-6">
+                <img src="img/logo.png" class="card-img-top " style="height: 90px; width: 80px;">
+            </div>
+    
+                <div class="col-6 text-right">
+                    <div class="display-4">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </div>
+        </div>
+    </footer>
+    
+</body>
+
+</html>
