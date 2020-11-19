@@ -48,7 +48,7 @@ class Tabelas {
                 cep VARCHAR(8) NOT NULL, 
                 fone VARCHAR(11) NOT NULL, 
                 email VARCHAR(200) NOT NULL, 
-                rgPf VARCHAR(9) NOT NULL, 
+                rgf VARCHAR(9) NOT NULL, 
                 cpf VARCHAR(11) NOT NULL,
                 senha VARCHAR(30) NOT NULL, 
                 PRIMARY KEY (cpf),

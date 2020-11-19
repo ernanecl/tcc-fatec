@@ -1,42 +1,37 @@
-const FuncionarioDao = require('../dao/FuncionarioDao');
-const { validationResult } = require('express-validator');
-const UsuarioDao = require('../dao/UsuarioDao');
+const FuncionarioDao = require("../dao/FuncionarioDao");
+const { validationResult } = require("express-validator");
+const UsuarioController = require("./UsuarioController");
+
 
 const funcionarioDao = new FuncionarioDao();
-const usuarioDao = new UsuarioDao();
+const usuarioController = new UsuarioController();
 
-class FuncionarioController{
+class FuncionarioController {
+  cadastro(req, res) {
+    const funcionario = req.body;
 
-    cadastro(req, res){
-        const funcionario = req.body;
+    const erros = validationResult(req);
 
-        const erros = validationResult(req);
-
-        //verificando se houve erro de validação
-        if(!erros.isEmpty()){
-            console.log("Ocorreram erros na validação " + erros);
-        }else{
-
-            //inserindo o funcionário na tabela usuário 
-            usuarioDao.inserir(funcionario.email, funcionario.senha,'SIM', (erro)=>{
-                if(erro){
-                    console.log(erro);
-                }else{
-                    console.log("Usuario inserido");
-
-                    //inserindo o funcionário na tabela de funcionários
-                    funcionarioDao.inserir(funcionario, (erro)=>{
-                        if(erro){
-                            console.log(erro);
-                        }else{
-                            console.log("Funcionário cadastrado!");
-                            res.status(201).send("Funcionário cadastrado com sucesso");
-                        }
-                    });
-                }
-            })
+    //verificando se houve erro de validação
+    if (!erros.isEmpty()) {
+      console.log("Ocorreram erros na validação " + erros);
+    } else {
+      usuarioController.inserirUsuario(
+        funcionario.email,
+        funcionario.senha,
+        "SIM"
+      );
+      //inserindo o funcionário na tabela de funcionários
+      funcionarioDao.inserir(funcionario, (erro) => {
+        if (erro) {
+          console.log(erro);
+        } else {
+          console.log("Funcionário cadastrado!");
+          res.status(201).send("Funcionário cadastrado com sucesso");
         }
+      });
     }
+  }
 }
 
 module.exports = FuncionarioController;
