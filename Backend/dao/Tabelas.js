@@ -40,16 +40,16 @@ class Tabelas {
   }
   criarPessoa() {
     const sql = `
-            CREATE TABLE IF NOT EXISTS pessoa(
+            CREATE TABLE IF NOT EXISTS pessoas(
                 nome VARCHAR(200) NOT NULL,
+                rg VARCHAR(9) NOT NULL, 
+                cpf VARCHAR(11) NOT NULL,
                 end VARCHAR(150) NOT NULL,
                 bairro VARCHAR(100) NOT NULL, 
                 cidade VARCHAR(100) NOT NULL, 
                 cep VARCHAR(8) NOT NULL, 
                 fone VARCHAR(11) NOT NULL, 
                 email VARCHAR(200) NOT NULL, 
-                rgf VARCHAR(9) NOT NULL, 
-                cpf VARCHAR(11) NOT NULL,
                 senha VARCHAR(30) NOT NULL, 
                 PRIMARY KEY (cpf),
                 FOREIGN KEY (email) REFERENCES usuarios(email)
@@ -67,7 +67,7 @@ class Tabelas {
 
   criarOrganizacao() {
     const sql = `
-        CREATE TABLE IF NOT EXISTS organizacao(
+        CREATE TABLE IF NOT EXISTS organizacoes(
                 nome VARCHAR(200) NOT NULL,
                 end VARCHAR(150) NOT NULL,
                 bairro VARCHAR(100) NOT NULL, 
@@ -141,7 +141,7 @@ class Tabelas {
 
   criarInscricao() {
     const sql = `
-      CREATE TABLE IF NOT EXISTS inscricao(
+      CREATE TABLE IF NOT EXISTS inscricoes(
         cod INT AUTO_INCREMENT NOT NULL, 
         nomeEvento VARCHAR(200), 
         qtd INT, 

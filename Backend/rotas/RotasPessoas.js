@@ -3,7 +3,7 @@ const router = express.Router();
 const Pessoa = require("../model/Pessoa");
 const PessoaController = require("../controller/PessoaController");
 
-const pessoa = new PessoaController();
-const rotas = new Pessoa().rotas();
+const pessoaController = new PessoaController();
+const pessoa = new Pessoa();
 
-router.post(rotas.cadastro, pessoa.cadastro);
+router.post(pessoa.rotas().cadastro, pessoa.validacoes(), pessoaController.cadastro);

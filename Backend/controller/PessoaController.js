@@ -4,7 +4,7 @@ const UsuarioController = require("./UsuarioController");
 const pessoaDao = new PessoaDao();
 const usuarioController = new UsuarioController();
 
-class PessoaController {
+class PessoasController {
   cadastro(req, res) {
     const pessoa = req.body;
 
@@ -20,4 +20,4 @@ class PessoaController {
     });
   }
 }
-module.exports = PessoaController;
+module.exports = PessoasController;
