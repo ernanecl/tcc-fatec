@@ -2,7 +2,6 @@ const FuncionarioDao = require("../dao/FuncionarioDao");
 const { validationResult } = require("express-validator");
 const UsuarioController = require("./UsuarioController");
 
-
 const funcionarioDao = new FuncionarioDao();
 const usuarioController = new UsuarioController();
 
@@ -15,6 +14,7 @@ class FuncionarioController {
     //verificando se houve erro de validação
     if (!erros.isEmpty()) {
       console.log("Ocorreram erros na validação " + erros);
+      res.send("Erros de validação " + erros);
     } else {
       usuarioController.inserirUsuario(
         funcionario.email,

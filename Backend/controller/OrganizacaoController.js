@@ -8,10 +8,10 @@ const usuarioController = new UsuarioController();
 class OrganizacaoController{
     
     cadastro(req, res){
-        let organizacao = req.body;
+        const organizacao = req.body;
 
         let erros = validationResult(req);
-        
+        //verificando se houve erro de validação
         if(!erros.isEmpty()){
             console.log(erros);
             res.send("Erros de validação " + erros);
@@ -22,7 +22,7 @@ class OrganizacaoController{
                 organizacao.senha,
                 "NÃO"
             );
-            
+            //inserindo o organização na tabela de organizações
             organizacaoDao.inserir(organizacao, (erro) =>{
                 if(erro){
                     console.log(erro);
