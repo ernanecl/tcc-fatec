@@ -37,7 +37,20 @@ class EventoDao {
       INSERT INTO eventos(nome, organizador, data, imagem, hora, inscricao, ficha, tempo, descricao, categoria, visibilidade, termo)
       VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
     `
-    conexao.query(sql, callback);
+    conexao.query(sql, [
+      evento.nome,
+      evento.organizador,
+      evento.data,
+      evento.imagem, 
+      evento.hora, 
+      evento.inscricao, 
+      evento.ficha, 
+      evento.tempo,
+      evento.descricao, 
+      evento.categoria,
+      evento.visibilidade, 
+      evento.termo
+    ], callback);
   }
 }
 
