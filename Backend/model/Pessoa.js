@@ -6,7 +6,7 @@ class Pessoa {
     };
   }
 
-  validacoes() {
+  static validacoes() {
     return [
       check("nome").notEmpty().withMessage("Nome precisa ser preenchido"),
       check("rg").notEmpty().withMessage("RG precisa ser preenchido"),

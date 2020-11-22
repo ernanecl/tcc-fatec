@@ -4,7 +4,8 @@ const Organizacao = require('../model/Organizacao');
 
 const router = express.Router();
 const organizao = new OrganizacaoController();
+const rotas = new Organizacao().rotas();
 
-router.post('/organizacao/cadastro', Organizacao.validacoes(), organizao.cadastro);
+router.post(rotas.cadastro, Organizacao.validacoes(), organizao.cadastro);
 
 module.exports = router;

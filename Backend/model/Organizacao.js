@@ -2,7 +2,13 @@ const { check } = require('express-validator');
 
 class Organizacao {
 
-    validacoes(){
+    rotas(){
+        return {
+            cadastro: '/organizacoes/cadastro'
+        }
+    }
+
+    static validacoes(){
         return [
             check("nome").notEmpty().withMessage("Nome precisa ser preenchido"),
             check("end").notEmpty().withMessage("Endereço precisa ser preenchido"),

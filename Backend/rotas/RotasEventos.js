@@ -1,17 +1,15 @@
 const EventoController = require ('../controller/EventosController');
+const Evento = require('../model/Evento');
 
 //Essas rotas ainda não estão funcionando
 
 const router = Router();
 const eventos = new EventoController();
+const rotas = new Evento().rotas();
 
-    router.route('/eventos/nome_evento/:nome')
-        .get(eventos.listaNome);
-    router.route('/eventos/data/:data')
-        .get(eventos.listaData);
-    router.route('/eventos/organizador/:organizador')
-        .get(eventos.listaOrganizador);
-    router.route('/eventos/cadastro')
-        .post(eventos.inserir);
+    router.get(rotas.consultaNome,eventos.listaNome);
+    router.get(rotas.consultaData,eventos.listaData);
+    router.get(rotas.consultaOrganizador,eventos.listaOrganizador);
+    router.post(rotas.cadastro,eventos.inserir);
 
 module.exports = router;
