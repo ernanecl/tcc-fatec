@@ -29,7 +29,7 @@ class OrganizacaoController{
                     res.send("Ocorreu um erro");
                 }else{
                     console.log("Organização cadastrada!");
-                    res.status(201).send("Organização cadastrada com sucesso!");
+                    res.status(201).send("Cadastrado com sucesso!");
                 }
             });
         }

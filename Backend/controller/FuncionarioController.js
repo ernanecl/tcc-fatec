@@ -27,7 +27,7 @@ class FuncionarioController {
           console.log(erro);
         } else {
           console.log("Funcionário cadastrado!");
-          res.status(201).send("Funcionário cadastrado com sucesso");
+          res.status(201).send("Cadastrado com sucesso!");
         }
       });
     }

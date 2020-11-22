@@ -22,7 +22,7 @@ class PessoasController {
           console.log(erro);
         } else {
           console.log("Pessoa cadastrado!");
-          res.status(201).send("Pessoa cadastrado com sucesso");
+          res.status(201).send("Cadastrado com sucesso!");
         }
       });
     }
