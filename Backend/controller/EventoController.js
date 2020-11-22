@@ -1,8 +1,8 @@
-const EventosDao = require ('../dao/EventosDao');
+const EventosDao = require ('../dao/EventoDao');
 const moment = require('moment')
-const eventosDao = new EventosDao();
+const eventoDao = new EventoDao();
 
-class EventosController{
+class EventoController{
 
     listaNome(req, res){
         const nome = req.params.nome;
@@ -49,5 +49,5 @@ class EventosController{
     }
 }
 
-module.exports = EventosController;
+module.exports = EventoController;
 

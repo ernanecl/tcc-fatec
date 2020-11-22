@@ -1,9 +1,9 @@
-const EventosController = require ('../controller/EventosController');
+const EventoController = require ('../controller/EventosController');
 
 //Essas rotas ainda não estão funcionando
 
 const router = Router();
-const eventos = new EventosController();
+const eventos = new EventoController();
 
     router.route('/eventos/nome_evento/:nome')
         .get(eventos.listaNome);

@@ -1,6 +1,6 @@
 const conexao = require("../config/conexao");
 
-class EventosDao {
+class EventoDao {
 
   //buscando por nome
   listaPorNome(nome, callback) {
@@ -33,4 +33,4 @@ class EventosDao {
   }
 }
 
-module.exports = EventosDao;
+module.exports = EventoDao;
