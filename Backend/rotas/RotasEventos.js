@@ -11,3 +11,7 @@ const eventos = new EventoController();
         .get(eventos.listaData);
     router.route('/eventos/organizador/:organizador')
         .get(eventos.listaOrganizador);
+    router.route('/eventos/cadastro')
+        .post(eventos.inserir);
+
+module.exports = router;
