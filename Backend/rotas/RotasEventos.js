@@ -1,9 +1,10 @@
+const express = require('express');
 const EventoController = require("../controller/EventosController");
 const Evento = require("../model/Evento");
 
 //Essas rotas ainda não estão funcionando
 
-const router = Router();
+const router = express.Router();
 const eventos = new EventoController();
 const rotas = new Evento().rotas();
 
