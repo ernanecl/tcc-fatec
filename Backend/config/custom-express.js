@@ -3,6 +3,7 @@ const rotasFuncionario = require('../rotas/RotasFuncionario');
 const rotasEvento = require('../rotas/RotasEventos');
 const rotasOrganizacao = require('../rotas/RotasOrganizacoes');
 const rotasPessoa = require('../rotas/RotasPessoas');
+const rotasInscricao = require('../rotas/RotasInscricoes');
 
 function Express(){
     const app = express();
@@ -15,6 +16,7 @@ function Express(){
     app.use(rotasEvento);
     app.use(rotasOrganizacao);
     app.use(rotasPessoa);
+    app.use(rotasInscricao);
 
 
     return app;

@@ -139,6 +139,7 @@ class Tabelas {
     });
   }
 
+  //ESSE CÓDIGO VAI SER AUTO INCREMENT OU DIGITADO PELO USUARIO?
   criarInscricao() {
     const sql = `
       CREATE TABLE IF NOT EXISTS inscricoes(
