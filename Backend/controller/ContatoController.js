@@ -5,7 +5,7 @@ const contatoDao = new ContatoDao();
 
 class ContatoController{
 
-    cadastro(req, res){
+    enviar(req, res){
         const contato = req.body;
 
         let erros = validationResult(req);
