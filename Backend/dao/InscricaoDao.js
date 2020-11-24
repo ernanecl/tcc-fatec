@@ -19,6 +19,14 @@ class InscricaoDao{
             inscricao.descricao
         ], callback);
     }
+
+    atualizar(nome, valores, callback){
+        const sql = `
+            UPDATE inscricoes SET ?
+            WHERE lcase(nomeEvento = ${JSON.stringify(nome)})
+        `
+        conexao.query(sql, valores, callback);
+    }
 }
 
 module.exports = InscricaoDao;
