@@ -1,6 +1,7 @@
 const InscricaoDao = require ('../dao/InscricaoDao');
 const moment = require('moment');
 const { validationResult } = require('express-validator');
+const verificandoAlteracao = require('../utils/verificandoAlteracao');
 
 const inscricaoDao = new InscricaoDao();
 
@@ -26,8 +27,27 @@ class InscricaoController{
                 }
             });
         }
-
         
+    }
+
+    atualizar(req, res){
+        const nome = req.params.nome;
+        const valores = req.body;
+
+        if(valores.qtd || valores.preco){
+            console.log("Esses campos precisam de autorização para alterar");
+            res.send("Esses campos precisam de alteração para alterar");
+            return;
+        }else{
+            inscricaoDao.atualizar(nome, valores, (erro, resultado)=>{
+                if(erro){
+                    console.log("Ocorreu algum erro");
+                    res.send("Ocorreu algum erro");
+                }else{
+                    verificandoAlteracao(resultado, res);
+                }
+            });
+        }
     }
 }
 
