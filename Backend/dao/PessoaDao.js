@@ -8,6 +8,15 @@ class PessoasDao {
         `;
     conexao.query(sql, callback);
   }
+
+  atualizar(email, valores, callback){
+    const sql = `
+      UPDATE pessoas SET ?
+      WHERE email = ${JSON.stringify(email)}
+    `
+
+    conexao.query(sql, valores, callback);
+  }
 }
 
 module.exports = PessoasDao;

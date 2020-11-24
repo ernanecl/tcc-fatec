@@ -22,6 +22,15 @@ class OrganizacaoDao {
       callback
     );
   }
+
+  atualizar(email, valores, callback){
+    const sql = `
+      UPDATE organizacoes SET ?
+      WHERE email = ${JSON.stringify(email)}
+    `
+
+    conexao.query(sql, valores, callback);
+  }
 }
 
 module.exports = OrganizacaoDao;
