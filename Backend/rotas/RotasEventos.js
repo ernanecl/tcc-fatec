@@ -12,5 +12,6 @@ router.get(rotas.consultaNome, eventos.listaNome);
 router.get(rotas.consultaData, eventos.listaData);
 router.get(rotas.consultaOrganizador, eventos.listaOrganizador);
 router.post(rotas.cadastro, Evento.validacoes(), eventos.inserir);
+router.put(rotas.alteracao, eventos.atualizar);
 
 module.exports = router;

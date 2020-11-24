@@ -5,7 +5,8 @@ class Evento{
             cadastro: '/eventos/cadastro',
             consultaNome: '/eventos/nome_evento/:nome',
             consultaData: '/eventos/data/:data',
-            consultaOrganizador: '/eventos/organizador/:organizador'
+            consultaOrganizador: '/eventos/organizador/:organizador',
+            alteracao: 'eventos/:nome&:organizador'
         }
     }
 

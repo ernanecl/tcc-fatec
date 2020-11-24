@@ -52,6 +52,15 @@ class EventoDao {
       evento.termo
     ], callback);
   }
+
+  atualizar(nomeEvento, organizador, valores, callback){
+    const sql = `
+      UPDATE eventos SET ? 
+      WHERE nome = ${JSON.stringify(nomeEvento)} AND organizador = ${JSON.stringify(organizador)}
+    `
+
+    conexao.query(sql, valores, callback);
+  }
 }
 
 module.exports = EventoDao;
