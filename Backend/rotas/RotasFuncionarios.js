@@ -7,7 +7,7 @@ const rotas = new Funcionario().rotas();
 const funcionarioController = new FuncionarioController();
 
 router.post(
-  rotas.cadastro,
+  rotas.cadastrar,
   Funcionario.validacoes(),
   funcionarioController.cadastro
 );

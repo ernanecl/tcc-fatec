@@ -6,7 +6,7 @@ const router = express.Router();
 const rotas = new Inscricao().rotas();
 const inscricao = new InscricaoController();
 
-router.post(rotas.cadastro, Inscricao.validacoes(), inscricao.cadastro);
-router.put(rotas.alteracao, inscricao.atualizar);
+router.post(rotas.cadastrar, Inscricao.validacoes(), inscricao.cadastro);
+router.put(rotas.alterar, inscricao.atualizar);
 
 module.exports = router;

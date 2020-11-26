@@ -3,8 +3,8 @@ const { check } = require('express-validator');
 class Inscricao{
     rotas(){
         return {
-            cadastro: '/inscricoes/cadastro',
-            alteracao: '/inscricoes/:nome'
+            cadastrar: '/inscricoes/cadastro',
+            alterar: '/inscricoes/:nome'
         }
     }
 

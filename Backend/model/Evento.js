@@ -2,11 +2,11 @@ const { check } = require('express-validator');
 class Evento{
     rotas(){
         return{
-            cadastro: '/eventos/cadastro',
-            consultaNome: '/eventos/nome_evento/:nome',
-            consultaData: '/eventos/data/:data',
-            consultaOrganizador: '/eventos/organizador/:organizador',
-            alteracao: 'eventos/:nome&:organizador'
+            cadastrar: '/eventos/cadastro',
+            consultarNome: '/eventos/nome_evento/:nome',
+            consultarData: '/eventos/data/:data',
+            consultarOrganizador: '/eventos/organizador/:organizador',
+            alterar: 'eventos/:nome&:organizador'
         }
     }
 

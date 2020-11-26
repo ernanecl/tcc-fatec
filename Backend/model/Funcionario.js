@@ -4,7 +4,7 @@ class Funcionario{
 
     rotas(){
         return {
-            cadastro: '/funcionarios/cadastro'
+            cadastrar: '/funcionarios/cadastro'
         }   
     }
 

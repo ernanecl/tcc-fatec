@@ -2,8 +2,8 @@ const { check } = require("express-validator");
 class Pessoa {
   rotas() {
     return {
-      cadastro: "/pessoas/cadastro",
-      alteracao: "/pessoas/:email"
+      cadastrar: "/pessoas/cadastro",
+      alterar: "/pessoas/:email"
     };
   }
 
