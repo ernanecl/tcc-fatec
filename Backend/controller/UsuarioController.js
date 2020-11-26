@@ -11,6 +11,15 @@ class UsuarioController {
       }
     });
   }
+  atualizar(email, valores){
+    usuarioDao.atualizar(email, valores, (erro)=>{
+      if(erro){
+        console.log(erro);
+      }else{
+        console.log("Usuário atualizado com sucesso!");
+      }
+    });
+  }
 }
 
 module.exports = UsuarioController;

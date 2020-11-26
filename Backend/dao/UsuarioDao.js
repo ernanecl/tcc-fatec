@@ -8,6 +8,13 @@ class UsuarioDao {
         `;
     conexao.query(sql, [email, senha, string], callback);
   }
+  atualizar(email, valores, callback){
+    const sql = `
+      UPDATE usuarios SET ?
+      WHERE email = ${JSON.stringify(email)}
+    `
+    conexao.query(sql, valores, callback);
+  }
 }
 
 module.exports = UsuarioDao;

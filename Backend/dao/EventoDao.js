@@ -5,7 +5,7 @@ class EventoDao {
   listaPorNome(nome, callback) {
     const sql = `
             SELECT * FROM eventos
-            WHERE lcase(nome = ${nome})
+            WHERE lcase(nome LIKE '%${nome}%')
         `;
 
     conexao.query(sql, callback);
@@ -15,9 +15,9 @@ class EventoDao {
   listaPorData(data, callback) {
     const sql = `
             SELECT * FROM eventos
-            WHERE lcase(data = ${data})
+            WHERE data = ${data}
         `;
-
+  
     conexao.query(sql, callback);
   }
 
@@ -25,7 +25,7 @@ class EventoDao {
   listaPorOrganizador(organizador, callback) {
     const sql = `
             SELECT * FROM eventos
-            WHERE lcase(organizador = ${organizador})
+            WHERE lcase(organizador LIKE '%${organizador}%')
         `;
 
     conexao.query(sql, callback);
@@ -59,9 +59,7 @@ class EventoDao {
   atualizar(nomeEvento, organizador, valores, callback) {
     const sql = `
       UPDATE eventos SET ? 
-      WHERE nome = ${JSON.stringify(
-        nomeEvento
-      )} AND organizador = ${JSON.stringify(organizador)}
+      WHERE lcase(nome LIKE '%${(nomeEvento)}%') AND lcase(organizador = '${organizador}')
     `;
 
     conexao.query(sql, valores, callback);
