@@ -11,7 +11,6 @@ class Tabelas {
     this.criarInscricao();
   }
 
-  
   criarFuncionarios() {
     const sql = `
             CREATE TABLE IF NOT EXISTS funcionarios( 

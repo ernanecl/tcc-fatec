@@ -1,6 +1,6 @@
-const express = require('express');
-const Inscricao = require('../model/Inscricao');
-const InscricaoController = require('../controller/InscricaoController');
+const express = require("express");
+const Inscricao = require("../model/Inscricao");
+const InscricaoController = require("../controller/InscricaoController");
 
 const router = express.Router();
 const rotas = new Inscricao().rotas();

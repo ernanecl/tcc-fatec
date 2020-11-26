@@ -3,7 +3,7 @@ class Pessoa {
   rotas() {
     return {
       cadastrar: "/pessoas/cadastro",
-      alterar: "/pessoas/:email"
+      alterar: "/pessoas/:email",
     };
   }
 
@@ -20,7 +20,7 @@ class Pessoa {
       check("email").notEmpty().withMessage("Email precisa ser preenchido"),
       check("senha")
         .isLength({ min: 8, max: 30 })
-        .withMessage("A senha precisa ter entre 8 e 30 caracteres")
+        .withMessage("A senha precisa ter entre 8 e 30 caracteres"),
     ];
   }
 }

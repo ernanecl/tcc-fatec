@@ -1,7 +1,7 @@
 const EventosDao = require("../dao/EventoDao");
 const { validationResult } = require("express-validator");
 const moment = require("moment");
-const verificandoAlteracao = require("../utils/verificandoAlteracao");
+const verificarAlteracao = require("../utils/verificandoAlteracao");
 const eventoDao = new EventoDao();
 
 class EventoController {
@@ -71,23 +71,28 @@ class EventoController {
     }
   }
 
-  atualizar(req, res){
+  atualizar(req, res) {
     const nome = req.params.nome;
     const organizador = req.params.organizador;
     const valores = req.body;
 
     //verificando se é algum desses campos que estão sendo alterados
-    if(valores.nome || valores.imagem || valores.ficha || valores.descricao || valores.visibilidade){
-      eventoDao.atualizar(nome, organizador, valores, (erro, resultado) =>{
-        if(erro){
-          console.log("Ocorreu um erro");
-          res.send("Ocorreu um erro");
-        }else{
-          verificandoAlteracao(resultado, res);
+    if (
+      valores.nome ||
+      valores.imagem ||
+      valores.ficha ||
+      valores.descricao ||
+      valores.visibilidade
+    ) {
+      eventoDao.atualizar(nome, organizador, valores, (erro, resultado) => {
+        if (erro) {
+          console.log("Ocorreu um erro " + erro);
+          res.status(500).send("Ocorreu um erro");
+        } else {
+          verificarAlteracao(resultado, res);
         }
       });
-
-    }else{
+    } else {
       console.log("Há campos que não podem ser alterados!");
       res.send("Há campos que não podem ser alterados!");
     }

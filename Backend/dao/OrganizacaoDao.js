@@ -23,11 +23,11 @@ class OrganizacaoDao {
     );
   }
 
-  atualizar(email, valores, callback){
+  atualizar(email, valores, callback) {
     const sql = `
       UPDATE organizacoes SET ?
       WHERE email = ${JSON.stringify(email)}
-    `
+    `;
 
     conexao.query(sql, valores, callback);
   }

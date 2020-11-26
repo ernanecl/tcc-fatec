@@ -2,7 +2,7 @@ const FuncionarioDao = require("../dao/FuncionarioDao");
 const { validationResult } = require("express-validator");
 const UsuarioController = require("./UsuarioController");
 const alterarRgCpf = require("../utils/alterarRgCpf");
-const verificandoAlteracao = require("../utils/verificandoAlteracao");
+const verificarAlteracao = require("../utils/verificandoAlteracao");
 
 const funcionarioDao = new FuncionarioDao();
 const usuarioController = new UsuarioController();
@@ -49,7 +49,7 @@ class FuncionarioController {
           return;
         }
 
-        verificandoAlteracao(resultado, res);
+        verificarAlteracao(resultado, res);
       });
     }
   }

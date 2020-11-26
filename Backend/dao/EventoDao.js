@@ -1,7 +1,6 @@
 const conexao = require("../config/conexao");
 
 class EventoDao {
-
   //buscando por nome
   listaPorNome(nome, callback) {
     const sql = `
@@ -32,32 +31,38 @@ class EventoDao {
     conexao.query(sql, callback);
   }
 
-  inserir(evento, callback){
+  inserir(evento, callback) {
     const sql = `
       INSERT INTO eventos(nome, organizador, data, imagem, hora, inscricao, ficha, tempo, descricao, categoria, visibilidade, termo)
       VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
-    `
-    conexao.query(sql, [
-      evento.nome,
-      evento.organizador,
-      evento.data,
-      evento.imagem, 
-      evento.hora, 
-      evento.inscricao, 
-      evento.ficha, 
-      evento.tempo,
-      evento.descricao, 
-      evento.categoria,
-      evento.visibilidade, 
-      evento.termo
-    ], callback);
+    `;
+    conexao.query(
+      sql,
+      [
+        evento.nome,
+        evento.organizador,
+        evento.data,
+        evento.imagem,
+        evento.hora,
+        evento.inscricao,
+        evento.ficha,
+        evento.tempo,
+        evento.descricao,
+        evento.categoria,
+        evento.visibilidade,
+        evento.termo,
+      ],
+      callback
+    );
   }
 
-  atualizar(nomeEvento, organizador, valores, callback){
+  atualizar(nomeEvento, organizador, valores, callback) {
     const sql = `
       UPDATE eventos SET ? 
-      WHERE nome = ${JSON.stringify(nomeEvento)} AND organizador = ${JSON.stringify(organizador)}
-    `
+      WHERE nome = ${JSON.stringify(
+        nomeEvento
+      )} AND organizador = ${JSON.stringify(organizador)}
+    `;
 
     conexao.query(sql, valores, callback);
   }

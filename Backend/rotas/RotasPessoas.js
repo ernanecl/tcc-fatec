@@ -4,7 +4,7 @@ const Pessoa = require("../model/Pessoa");
 const PessoaController = require("../controller/PessoaController");
 
 const pessoaController = new PessoaController();
-const rotas= new Pessoa().rotas();
+const rotas = new Pessoa().rotas();
 
 router.post(rotas.cadastrar, Pessoa.validacoes(), pessoaController.cadastro);
 router.put(rotas.alterar, pessoaController.alterar);

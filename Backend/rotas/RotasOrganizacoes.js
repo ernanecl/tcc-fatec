@@ -1,6 +1,6 @@
 const express = require("express");
 const OrganizacaoController = require("../controller/OrganizacaoController");
-const Organizacao = require('../model/Organizacao');
+const Organizacao = require("../model/Organizacao");
 
 const router = express.Router();
 const organizao = new OrganizacaoController();
