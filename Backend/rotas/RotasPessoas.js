@@ -7,3 +7,4 @@ const pessoaController = new PessoaController();
 const rotas= new Pessoa().rotas();
 
 router.post(rotas.cadastro, Pessoa.validacoes(), pessoaController.cadastro);
+router.put(rotas.alteracao, pessoaController.alterar);

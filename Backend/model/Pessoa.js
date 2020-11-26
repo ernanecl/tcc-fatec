@@ -3,6 +3,7 @@ class Pessoa {
   rotas() {
     return {
       cadastro: "/pessoas/cadastro",
+      alteracao: "/pessoas/:email"
     };
   }
 
