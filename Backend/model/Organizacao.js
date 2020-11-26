@@ -4,7 +4,8 @@ class Organizacao {
 
     rotas(){
         return {
-            cadastro: '/organizacoes/cadastro'
+            cadastrar: '/organizacoes/cadastro',
+            alterar: 'organizacoes/:email'
         }
     }
 

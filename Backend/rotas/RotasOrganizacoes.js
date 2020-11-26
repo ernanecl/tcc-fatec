@@ -7,5 +7,6 @@ const organizao = new OrganizacaoController();
 const rotas = new Organizacao().rotas();
 
 router.post(rotas.cadastro, Organizacao.validacoes(), organizao.cadastro);
+router.put(rotas.alterar, organizao.alterar);
 
 module.exports = router;
