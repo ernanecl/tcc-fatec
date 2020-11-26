@@ -1,6 +1,8 @@
 const PessoaDao = require("../dao/PessoaDao");
 const UsuarioController = require("./UsuarioController");
 const { validationResult } = require('express-validator');
+const alterarRgCpf = require("../utils/alterarRgCpf");
+const verificandoAlteracao = require("../utils/verificandoAlteracao");
 
 const pessoaDao = new PessoaDao();
 const usuarioController = new UsuarioController();
@@ -26,6 +28,25 @@ class PessoasController {
         }
       });
     }
+  }
+
+  alterar(req, res){
+    const email = req.params.email;
+    const valores = req.body;
+
+    if(alterarRgCpf(valores,res)){
+      return;
+    }else{
+      pessoaDao.atualizar(email, valores, (erro, resultado)=>{
+        if(erro){
+          console.log("Ocorreu um erro");
+          res.status(500).send("Ocorreu um erro");
+          return;
+        }
+        verificandoAlteracao(result, res);
+      });
+    }
+
   }
 }
 
