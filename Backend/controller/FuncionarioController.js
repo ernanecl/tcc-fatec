@@ -1,6 +1,8 @@
 const FuncionarioDao = require("../dao/FuncionarioDao");
 const { validationResult } = require("express-validator");
 const UsuarioController = require("./UsuarioController");
+const alterarRgCpf = require("../utils/alterarRgCpf");
+const verificandoAlteracao = require("../utils/verificandoAlteracao");
 
 const funcionarioDao = new FuncionarioDao();
 const usuarioController = new UsuarioController();
@@ -29,6 +31,25 @@ class FuncionarioController {
           console.log("Funcionário cadastrado!");
           res.status(201).send("Cadastrado com sucesso!");
         }
+      });
+    }
+  }
+
+  alterar(req, res) {
+    const email = req.params.email;
+    const valores = req.body;
+
+    if (alterarRgCpf(valores, res)) {
+      return;
+    } else {
+      funcionarioDao.atualizar(email, valores, (erro, resultado) => {
+        if (erro) {
+          console.log("Ocorreu um erro " + erro);
+          res.status(500).send("Ocorreu um erro");
+          return;
+        }
+
+        verificandoAlteracao(resultado, res);
       });
     }
   }

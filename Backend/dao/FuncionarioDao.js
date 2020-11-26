@@ -21,6 +21,15 @@ class FuncionarioDao{
             funcionario.senha
         ], callback);
     }
+
+    atualizar(email, valores, callback){
+        const sql = `
+            UPDATE pessoas SET ?
+            WHERE email = ${JSON.stringify(email)}
+        `
+
+        conexao.query(sql, valores, callback);
+    }
 }
 
 module.exports = FuncionarioDao;

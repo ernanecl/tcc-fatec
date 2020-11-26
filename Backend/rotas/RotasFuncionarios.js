@@ -11,6 +11,7 @@ router.post(
   Funcionario.validacoes(),
   funcionarioController.cadastro
 );
+router.put(rotas.alterar, funcionarioController.alterar);
 
 //exportando o router
 module.exports = router;
