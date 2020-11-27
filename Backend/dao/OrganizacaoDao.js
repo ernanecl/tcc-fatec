@@ -1,6 +1,24 @@
 const conexao = require("../config/conexao");
 
 class OrganizacaoDao {
+  listarPorNome(nome, callback){
+    const sql = `
+      SELECT nome, end, bairro, cidade, cep, fone, email, cnpj
+      FROM pessoas
+      WHERE lcase(nome LIKE '%${nome}%')
+    `;
+
+    conexao.query(sql, callback);
+  }
+  listarPorCnpj(cnpj, callback){
+    const sql = `
+      SELECT nome, end, bairro, cidade, cep, fone, email, cnpj
+      FROM pessoas
+      WHERE cpf = '${nome}'
+    `;
+
+    conexao.query(sql, callback);
+  }
   inserir(organizacao, callback) {
     const sql = `
             INSERT INTO organizacoes(nome, end, bairro, cidade, cep, fone, email, cnpj, senha)

@@ -3,11 +3,37 @@ const UsuarioController = require("./UsuarioController");
 const { validationResult } = require("express-validator");
 const alterarRgCpf = require("../utils/alterarRgCpf");
 const verificarAlteracao = require("../utils/verificandoAlteracao");
+const verificarResultado = require("../utils/verificarResultado");
 
 const organizacaoDao = new OrganizacaoDao();
 const usuarioController = new UsuarioController();
 
 class OrganizacaoController {
+  consultaPorNome(req, res){
+    const nome = req.params.nome;
+
+    organizacaoDao.listarPorNome(nome, (erro, resultado)=>{
+      if(erro){
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send('Ocorreu um erro');
+        return;
+      }
+
+      verificarResultado(resultado, res);
+    });
+  }
+  consultaPorCnpj(req, res){
+    const cnpj = req.params.cnpj;
+
+    organizacaoDao.listarPorCnpj(cnpj, (erro, resultado) =>{
+      if(erro){
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send('Ocorreu um erro');
+        return;
+      }
+      verificarResultado(resultado, res);
+    });
+  }
   cadastro(req, res) {
     const organizacao = req.body;
 

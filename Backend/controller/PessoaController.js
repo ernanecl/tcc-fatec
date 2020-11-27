@@ -3,11 +3,24 @@ const UsuarioController = require("./UsuarioController");
 const { validationResult } = require("express-validator");
 const alterarRgCpf = require("../utils/alterarRgCpf");
 const verificarAlteracao = require("../utils/verificandoAlteracao");
+const verificarResultado = require("../utils/verificarResultado");
 
 const pessoaDao = new PessoaDao();
 const usuarioController = new UsuarioController();
 
 class PessoasController {
+  consulta(req, res) {
+    const cpf = req.params.cpf;
+
+    pessoaDao.listar(cpf, (erro, resultado) => {
+      if (erro) {
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send("Ocorreu um erro");
+        return;
+      }
+      verificarResultado(resultado, res);
+    });
+  }
   cadastro(req, res) {
     const pessoa = req.body;
 

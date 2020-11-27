@@ -1,6 +1,14 @@
 const conexao = require("../config/conexao");
 
 class PessoasDao {
+  listar(cpf, callback) {
+    const sql = `
+      SELECT nome, end, bairro, cidade, cep, fone, email
+      FROM pessoas
+      WHERE cpf = '${cpf}'
+    `;
+    conexao.query(sql, callback);
+  }
   inserir(pessoa, callback) {
     const sql = `
             INSERT INTO pessoas(nome, rg, cpf, end, bairro, cidade, cep, fone, email, senha)
