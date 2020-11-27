@@ -24,6 +24,11 @@ class InscricaoDao {
     );
   }
 
+  listar(nomeEvento, callback){
+    const sql = `SELECT * FROM inscricoes WHERE lcase(nomeEvento LIKE '%${nomeEvento}%')`
+
+    conexao.query(sql, callback);
+  }
   atualizar(nome, valores, callback) {
     const sql = `
             UPDATE inscricoes SET ?

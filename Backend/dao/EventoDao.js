@@ -4,7 +4,7 @@ class EventoDao {
   //buscando por nome
   listaPorNome(nome, callback) {
     const sql = `
-            SELECT * FROM eventos
+            SELECT cod, nome, organizador, categoria, data, hora, ficha, duracao, descricao FROM eventos
             WHERE lcase(nome LIKE '%${nome}%')
         `;
 
@@ -24,7 +24,7 @@ class EventoDao {
   //buscando por organizador
   listaPorOrganizador(organizador, callback) {
     const sql = `
-            SELECT * FROM eventos
+            SELECT  cod, nome, organizador, categoria, data, hora, ficha, duracao, descricao FROM eventos
             WHERE lcase(organizador LIKE '%${organizador}%')
         `;
 

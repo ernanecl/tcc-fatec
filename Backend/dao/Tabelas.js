@@ -121,7 +121,7 @@ class Tabelas {
         hora VARCHAR(4) NOT NULL, 
         inscricao VARCHAR(3) NOT NULL,  
         ficha text NOT NULL, 
-        tempo VARCHAR(10) NOT NULL, 
+        duracao VARCHAR(10) NOT NULL, 
         descricao text NOT NULL, 
         categoria VARCHAR(200) NOT NULL, 
         visibilidade VARCHAR(100) NOT NULL,

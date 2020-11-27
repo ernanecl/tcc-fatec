@@ -6,6 +6,19 @@ const verificarAlteracao = require("../utils/verificandoAlteracao");
 const inscricaoDao = new InscricaoDao();
 
 class InscricaoController {
+  consulta(req, res) {
+    const nomeEvento = req.params.nomeEvento;
+
+    inscricaoDao.listar(nomeEvento, (erro, resultado) => {
+      if (erro) {
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send("Ocorreu um erro!");
+        return;
+      }
+
+      res.status(200).json(resultado);
+    });
+  }
   cadastro(req, res) {
     const inscricao = req.body;
     inscricao.dataInicio = moment(inscricao.dataInicio, "DD/MM/YYYY").format(

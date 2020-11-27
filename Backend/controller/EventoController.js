@@ -2,6 +2,7 @@ const EventosDao = require("../dao/EventoDao");
 const { validationResult } = require("express-validator");
 const moment = require("moment");
 const verificarAlteracao = require("../utils/verificandoAlteracao");
+const verificarResultado = require("../utils/verificarResultado");
 const eventoDao = new EventoDao();
 
 class EventoController {
@@ -12,10 +13,9 @@ class EventoController {
       if (erro) {
         console.log(erro);
         res.status(500).send("Ocorreu um erro");
-      } else {
-        console.log(resultado);
-        res.status(200).json(resultado);
-      }
+        return;
+      } 
+      verificarResultado(resultado, res);
     });
   }
 
@@ -28,10 +28,9 @@ class EventoController {
       if (erro) {
         console.log(erro);
         res.status(500).send("Ocorreu um erro");
-      } else {
-        console.log(resultado);
-        res.status(200).json(resultado);
-      }
+        return;
+      } 
+      verificarResultado(resultado, res);
     });
   }
 
@@ -42,10 +41,9 @@ class EventoController {
       if (erro) {
         console.log(erro);
         res.status(500).send("Ocorreu um erro");
-      } else {
-        console.log(resultado);
-        res.status(200).json(resultado);
-      }
+        return;
+      } 
+      verificarResultado(resultado, res);
     });
   }
 
