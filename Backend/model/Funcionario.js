@@ -3,6 +3,10 @@ const { check } = require("express-validator");
 class Funcionario {
   rotas() {
     return {
+      consultarPorEmail: '/funcionarios/email/:email',
+      consultarPorNome: '/funcionarios/nome/:nome',
+      consultarPorCpf: '/funcionarios/cpf/:cpf',
+      consultarPorCargo: '/funcionarios/cargo/:cargo',
       cadastrar: "/funcionarios/cadastro",
       alterar: "/funcionarios/:email",
     };
