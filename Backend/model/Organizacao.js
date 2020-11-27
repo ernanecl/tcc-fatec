@@ -3,6 +3,8 @@ const { check } = require("express-validator");
 class Organizacao {
   rotas() {
     return {
+      consultarCnpj: "/organizacoes/cnpj/:cnpj",
+      consultarNome: "/organizacoes/nome/:nome",
       cadastrar: "/organizacoes/cadastro",
       alterar: "organizacoes/:email",
     };

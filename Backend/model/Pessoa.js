@@ -2,6 +2,7 @@ const { check } = require("express-validator");
 class Pessoa {
   rotas() {
     return {
+      consultar: '/pessoas/:cpf',
       cadastrar: "/pessoas/cadastro",
       alterar: "/pessoas/:email",
     };
