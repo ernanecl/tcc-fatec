@@ -1,7 +1,7 @@
 const EventosDao = require("../dao/EventoDao");
 const { validationResult } = require("express-validator");
 const moment = require("moment");
-const verificarAlteracao = require("../utils/verificandoAlteracao");
+const verificarAlteracao = require("../utils/verificarAlteracao");
 const verificarResultado = require("../utils/verificarResultado");
 const eventoDao = new EventoDao();
 

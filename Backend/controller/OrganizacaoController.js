@@ -2,7 +2,7 @@ const OrganizacaoDao = require("../dao/OrganizacaoDao");
 const UsuarioController = require("./UsuarioController");
 const { validationResult } = require("express-validator");
 const alterarRgCpf = require("../utils/alterarRgCpf");
-const verificarAlteracao = require("../utils/verificandoAlteracao");
+const verificarAlteracao = require("../utils/verificarAlteracao");
 const verificarResultado = require("../utils/verificarResultado");
 
 const organizacaoDao = new OrganizacaoDao();
