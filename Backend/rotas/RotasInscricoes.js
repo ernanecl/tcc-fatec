@@ -4,9 +4,10 @@ const InscricaoController = require("../controller/InscricaoController");
 
 const router = express.Router();
 const rotas = new Inscricao().rotas();
-const inscricao = new InscricaoController();
+const inscricaoDao = new InscricaoController();
 
-router.post(rotas.cadastrar, Inscricao.validacoes(), inscricao.cadastro);
-router.put(rotas.alterar, inscricao.atualizar);
+router.get(rotas.consultar, inscricaoDao.consulta);
+router.post(rotas.cadastrar, Inscricao.validacoes(), inscricaoDao.cadastro);
+router.put(rotas.alterar, inscricaoDao.atualizar);
 
 module.exports = router;
