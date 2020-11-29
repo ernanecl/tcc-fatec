@@ -7,6 +7,6 @@ const rotas = new Contato().rotas();
 const contatoController = new ContatoController();
 
 router.route(rotas.enviar)
-    .post(contatoController.cadastrar);
+    .post(Contato.validacoes(), contatoController.cadastrar);
 
 module.exports = router;

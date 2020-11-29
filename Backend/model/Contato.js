@@ -8,10 +8,12 @@ class Contato {
   }
 
   static validacoes() {
-    check("nome").notEmpty().withMessage("O nome precisa ser preenchido"),
+    return [
+      check("nome").notEmpty().withMessage("O nome precisa ser preenchido"),
       check("email").notEmpty().withMessage("O email precisa ser preenchido"),
       check("tel").notEmpty().withMessage("O telefone precisa ser preenchido"),
-      check("msg").notEmpty().withMessage("A mensagem precisa ser preenchida");
+      check("msg").notEmpty().withMessage("A mensagem precisa ser preenchida")
+    ]
   }
 }
 
