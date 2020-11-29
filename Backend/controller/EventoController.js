@@ -6,7 +6,7 @@ const verificarResultado = require("../utils/verificarResultado");
 const eventoDao = new EventoDao();
 
 class EventoController {
-  listaNome(req, res) {
+  listarPorNome(req, res) {
     const nome = req.params.nome;
 
     eventoDao.listaPorNome(nome, (erro, resultado) => {
@@ -19,7 +19,7 @@ class EventoController {
     });
   }
 
-  listaData(req, res) {
+  listarPorData(req, res) {
     const data = req.params.data;
 
     //usando o moment para formatar a data recebida
@@ -34,7 +34,7 @@ class EventoController {
     });
   }
 
-  listaOrganizador(req, res) {
+  listarPorOrganizador(req, res) {
     const organizador = req.params.organizador;
 
     eventoDao.listaPorOrganizador(organizador, (erro, resultado) => {
@@ -47,7 +47,7 @@ class EventoController {
     });
   }
 
-  cadastro(req, res) {
+  cadastrar(req, res) {
     const evento = req.body;
     evento.data = moment(evento.data, "DD/MM/YYYY").format("YYYY-MM-DD");
 
@@ -87,7 +87,10 @@ class EventoController {
           console.log("Ocorreu um erro " + erro);
           res.status(500).send("Ocorreu um erro");
         } else {
-          //verificarAlteracao(resultado, res);
+          if(verificarAlteracao(res, resultado.changedRows)){
+            console.log("Alterado com sucesso!");
+            res.status(200).send("Alterado com sucesso!");
+          }
         }
       });
     } else {
