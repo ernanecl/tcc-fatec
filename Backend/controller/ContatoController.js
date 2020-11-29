@@ -1,10 +1,11 @@
-const { validationResul, validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
 const ContatoDao = require("../dao/ContatoDao");
 
 const contatoDao = new ContatoDao();
 
 class ContatoController {
-  enviar(req, res) {
+
+  cadastrar(req, res) {
     const contato = req.body;
 
     let erros = validationResult(req);
@@ -15,8 +16,9 @@ class ContatoController {
       contatoDao.inserir(contato, (erro) => {
         if (erro) {
           console.log(erro);
-          res.send("Ocorreu um erro");
+          res.status(500).send("Ocorreu um erro");
         } else {
+          console.log("Enviado com sucesso!");
           res.status(201).send("Enviado com sucesso!");
         }
       });

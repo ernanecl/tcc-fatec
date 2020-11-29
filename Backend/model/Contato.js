@@ -3,7 +3,7 @@ const { check } = require("express-validator");
 class Contato {
   rotas() {
     return {
-      cadastrar: "/contatos/cadastro",
+      enviar: "/contatos/cadastro"
     };
   }
 

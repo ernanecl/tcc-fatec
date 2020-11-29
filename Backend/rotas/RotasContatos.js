@@ -1,10 +1,12 @@
 const express = require("express");
+const router = express.Router();
 const Contato = require("../model/Contato");
 const ContatoController = require("../controller/ContatoController");
-
-const router = express.Router();
 const rotas = new Contato().rotas();
-const contato = new ContatoController();
 
-//router.post(rotas.cadastrar, Contato.validacoes(), contato.enviar);
+const contatoController = new ContatoController();
+
+// router.route(rotas.enviar)
+//   .post(Contato.validacoes(), contatoController.cadastrar);
+
 module.exports = router;

@@ -12,6 +12,7 @@ function Express(){
     app.use(express.json()); //Pegar a requisição como json
 
     app.use(rotasFuncionario);
+    app.use(rotasContato);
     
 
     //add a rotas ao app
