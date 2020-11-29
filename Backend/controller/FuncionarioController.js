@@ -102,6 +102,31 @@ class FuncionarioController {
       });
     }
   }
+
+  excluirPorRg(req, res){
+    const rg = req.params.rg;
+
+    funcionarioDao.deletarPorRG(rg, (erro, resultado)=>{
+      if (erro) {
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send("Ocorreu um erro");
+        return;
+      }
+
+    });
+  }
+  excluirPorCpf(req, res){
+    const cpf = req.params.rg;
+
+    funcionarioDao.deletarPorCpf(cpf, (erro, resultado)=>{
+      if (erro) {
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send("Ocorreu um erro");
+        return;
+      }
+      
+    });
+  }
 }
 
 module.exports = FuncionarioController;

@@ -1,36 +1,36 @@
 const conexao = require("../config/conexao");
 
 class FuncionarioDao {
-  listarPorEmail(email, callback){
+  listarPorEmail(email, callback) {
     const sql = `
       SELECT nome, rg, cpf, cargo, end, bairro, cidade, cep, fone, email
       FROM funcionarios
       WHERE email = '${email}'
-    `
+    `;
     conexao.query(sql, callback);
   }
-  listarPorNome(nome, callback){
+  listarPorNome(nome, callback) {
     const sql = `
       SELECT nome, rg, cpf, cargo, end, bairro, cidade, cep, fone, email
       FROM funcionarios
       WHERE lcase(nome LIKE '%${nome}%')
-    `
+    `;
     conexao.query(sql, callback);
   }
-  listarPorCpf(cpf, callback){
+  listarPorCpf(cpf, callback) {
     const sql = `
       SELECT nome, rg, cpf, cargo, end, bairro, cidade, cep, fone, email
       FROM funcionarios
       WHERE cpf = '${cpf}'
-    `
+    `;
     conexao.query(sql, callback);
   }
-  listarPorNome(cargo, callback){
+  listarPorNome(cargo, callback) {
     const sql = `
       SELECT nome, rg, cpf, cargo, end, bairro, cidade, cep, fone, email
       FROM funcionarios
       WHERE lcase(cargo LIKE '%${cargo}%')
-    `
+    `;
     conexao.query(sql, callback);
   }
   inserir(funcionario, callback) {
@@ -60,10 +60,27 @@ class FuncionarioDao {
   atualizar(email, valores, callback) {
     const sql = `
             UPDATE pessoas SET ?
-            WHERE email = ${JSON.stringify(email)}
+            WHERE email = '${email}'
         `;
 
     conexao.query(sql, valores, callback);
+  }
+
+  deletarPorRG(rg, callback) {
+    const sql = `
+            DELETE funcionarios
+            WHERE rg = '${rg}'
+        `;
+
+    conexao.query(sql, callback);
+  }
+  deletarPorCpf(cpf, callback) {
+    const sql = `
+            DELETE funcionarios
+            WHERE cpf = '${cpf}'
+        `;
+
+    conexao.query(sql, callback);
   }
 }
 
