@@ -6,25 +6,25 @@ const rotas = new Funcionario().rotas();
 
 const funcionarioController = new FuncionarioController();
 
-router.route(rotas.buscarPorEmail)
-  .get(funcionarioController.consultaPorEmail);
-router.route(rotas.buscarPorNome)
-  .get(funcionarioController.consultaPorNome);
-router.route(rotas.buscarPorCpf)
-  .get(funcionarioController.consultaPorCpf);
-router.route(rotas.buscarPorCargo)
-  .get(funcionarioController.consultaPorCargo);
-router.route(rotas.cadastrar)
+router.route(rotas.consultarPorEmail)
+  .get(funcionarioController.listarPorEmail);
+router.route(rotas.consultarPorNome)
+  .get(funcionarioController.listarPorNome);
+router.route(rotas.consultarPorCpf)
+  .get(funcionarioController.listarPorCpf);
+router.route(rotas.consultarPorCargo)
+  .get(funcionarioController.listarPorCargo);
+router.route(rotas.incluir)
   .post(
   Funcionario.validacoes(),
-  funcionarioController.cadastro
+  funcionarioController.cadastrar
 );
 router.route(rotas.alterar)
-  .put(funcionarioController.alterar);
+  .put(funcionarioController.atualizar);
 router.route(rotas.excluirRg)
-  .delete(funcionarioController.excluirPorRg);
+  .delete(funcionarioController.removerPorRg);
 router.route(rotas.excluirCpf)
-  .delete(funcionarioController.excluirPorCpf);
+  .delete(funcionarioController.removerPorCpf);
 
 //exportando o router
 module.exports = router;

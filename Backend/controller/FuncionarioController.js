@@ -8,7 +8,7 @@ const funcionarioDao = new FuncionarioDao();
 const usuarioController = new UsuarioController();
 
 class FuncionarioController {
-  consultaPorEmail(req, res) {
+  listarPorEmail(req, res) {
     const email = req.params.email;
 
     funcionarioDao.listarPorEmail(email, (erro, resultado) => {
@@ -20,7 +20,7 @@ class FuncionarioController {
       verificarResultado(resultado, res);
     });
   }
-  consultaPorNome(req, res) {
+  listarPorNome(req, res) {
     const nome = req.params.nome;
 
     funcionarioDao.listarPorNome(nome, (erro, resultado) => {
@@ -32,7 +32,7 @@ class FuncionarioController {
       verificarResultado(resultado, res);
     });
   }
-  consultaPorCpf(req, res) {
+  listarPorCpf(req, res) {
     const cpf = req.params.cpf;
 
     funcionarioDao.listarPorCpf(cpf, (erro, resultado) => {
@@ -44,7 +44,7 @@ class FuncionarioController {
       verificarResultado(resultado, res);
     });
   }
-  consultaPorCargo(req, res) {
+  listarPorCargo(req, res) {
     const cargo = req.params.cargo;
 
     funcionarioDao(cargo, (erro, resultado) => {
@@ -57,7 +57,7 @@ class FuncionarioController {
     });
   }
 
-  cadastro(req, res) {
+  cadastrar(req, res) {
     const funcionario = req.body;
 
     const erros = validationResult(req);
@@ -84,7 +84,7 @@ class FuncionarioController {
     }
   }
 
-  alterar(req, res) {
+  atualizar(req, res) {
     const email = req.params.email;
     const valores = req.body;
     console.log(email);
@@ -106,7 +106,7 @@ class FuncionarioController {
     }
   }
 
-  excluirPorRg(req, res) {
+  removerPorRg(req, res) {
     const rg = req.params.rg;
 
     funcionarioDao.deletarPorRG(rg, (erro, resultado) => {
@@ -117,7 +117,7 @@ class FuncionarioController {
       }
     });
   }
-  excluirPorCpf(req, res) {
+  removerPorCpf(req, res) {
     const cpf = req.params.rg;
 
     funcionarioDao.deletarPorCpf(cpf, (erro, resultado) => {
