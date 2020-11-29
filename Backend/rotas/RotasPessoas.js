@@ -2,10 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Pessoa = require("../model/Pessoa");
 const PessoaController = require("../controller/PessoaController");
-
-const pessoaController = new PessoaController();
 const rotas = new Pessoa().rotas();
 
-//router.get(rotas.consultar, pessoaController.consulta);
-// router.post(rotas.cadastrar, Pessoa.validacoes(), pessoaController.cadastro);
-// router.put(rotas.alterar, pessoaController.alterar);
+const pessoaController = new PessoaController();
+
+
+router.route(rotas.consultar)
+    .get(pessoaController.listar);
+router.route(rotas.incluir)
+    .post(Pessoa.validacoes(), pessoaController.cadastrar);
+router.route(rotas.alterar)
+    .put(pessoaController.atualizar);

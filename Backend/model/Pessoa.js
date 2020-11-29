@@ -3,7 +3,7 @@ class Pessoa {
   rotas() {
     return {
       consultar: '/pessoas/:cpf',
-      cadastrar: "/pessoas/cadastro",
+      incluir: "/pessoas/cadastro",
       alterar: "/pessoas/:email",
     };
   }

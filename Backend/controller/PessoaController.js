@@ -9,7 +9,7 @@ const pessoaDao = new PessoaDao();
 const usuarioController = new UsuarioController();
 
 class PessoasController {
-  consulta(req, res) {
+  listar(req, res) {
     const cpf = req.params.cpf;
 
     pessoaDao.listar(cpf, (erro, resultado) => {
@@ -21,7 +21,7 @@ class PessoasController {
       verificarResultado(resultado, res);
     });
   }
-  cadastro(req, res) {
+  cadastrar(req, res) {
     const pessoa = req.body;
 
     let erros = validationResult(req);
@@ -43,7 +43,7 @@ class PessoasController {
     }
   }
 
-  alterar(req, res) {
+  atualizar(req, res) {
     const email = req.params.email;
     const valores = req.body;
 
@@ -56,7 +56,10 @@ class PessoasController {
           res.status(500).send("Ocorreu um erro");
           return;
         }
-        //verificarAlteracao(result, res);
+        if (verificarAlteracao(res, resultado.changedRows)) {
+          console.log("Alterado com sucesso!");
+          res.status(200).send("Alterado com sucesso!");
+        }
       });
     }
   }
