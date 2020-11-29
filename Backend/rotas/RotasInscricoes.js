@@ -1,13 +1,16 @@
 const express = require("express");
+const router = express.Router();
 const Inscricao = require("../model/Inscricao");
 const InscricaoController = require("../controller/InscricaoController");
-
-const router = express.Router();
 const rotas = new Inscricao().rotas();
-const inscricaoDao = new InscricaoController();
 
-// router.get(rotas.consultar, inscricaoDao.consulta);
-// router.post(rotas.cadastrar, Inscricao.validacoes(), inscricaoDao.cadastro);
-// router.put(rotas.alterar, inscricaoDao.atualizar);
+const inscricaoController = new InscricaoController();
+
+router.route(rotas.consultar)
+    .get(inscricaoController.listar);
+router.route(rotas.incluir)
+     .post(inscricaoController.cadastrar);
+router.route(rotas.alterar)
+    .put(inscricaoController.atualizar);
 
 module.exports = router;

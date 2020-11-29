@@ -4,7 +4,7 @@ class Inscricao {
   rotas() {
     return {
       consultar: '/inscricoes/:nomeEvento',
-      cadastrar: "/inscricoes/cadastro",
+      incluir: "/inscricoes/cadastro",
       alterar: "/inscricoes/:nome",
     };
   }

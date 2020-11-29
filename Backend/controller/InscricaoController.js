@@ -6,7 +6,7 @@ const verificarAlteracao = require("../utils/verificarAlteracao");
 const inscricaoDao = new InscricaoDao();
 
 class InscricaoController {
-  consulta(req, res) {
+  listar(req, res) {
     const nomeEvento = req.params.nomeEvento;
 
     inscricaoDao.listar(nomeEvento, (erro, resultado) => {
@@ -19,7 +19,8 @@ class InscricaoController {
       res.status(200).json(resultado);
     });
   }
-  cadastro(req, res) {
+
+  cadastrar(req, res) {
     const inscricao = req.body;
     inscricao.dataInicio = moment(inscricao.dataInicio, "DD/MM/YYYY").format(
       "YYYY-MM-DD"
@@ -37,7 +38,7 @@ class InscricaoController {
       inscricaoDao.inserir(inscricao, (erro) => {
         if (erro) {
           console.log(erro);
-          res.send("Ocorreu um erro");
+          res.status.send("Ocorreu um erro");
         } else {
           console.log("Inscrição cadastrado!");
           res.status(201).send("Cadastrado com sucesso!");
@@ -58,9 +59,12 @@ class InscricaoController {
       inscricaoDao.atualizar(nome, valores, (erro, resultado) => {
         if (erro) {
           console.log("Ocorreu algum erro");
-          res.send("Ocorreu algum erro");
+          res.status(500).send("Ocorreu algum erro");
         } else {
-          //verificarAlteracao(resultado, res);
+          if(verificarAlteracao(res, resultado.changedRows)){
+            console.log("Alterado com sucesso!");
+            res.status(200).send("Alterado com sucesso!");
+          }
         }
       });
     }
