@@ -13,3 +13,5 @@ router.route(rotas.incluir)
     .post(Pessoa.validacoes(), pessoaController.cadastrar);
 router.route(rotas.alterar)
     .put(pessoaController.atualizar);
+
+module.exports = router;

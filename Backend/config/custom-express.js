@@ -11,17 +11,13 @@ function Express(){
     app.use(express.urlencoded({extended: true})); //Pegar o corpo da requisição no navegador
     app.use(express.json()); //Pegar a requisição como json
 
-    app.use(rotasFuncionario);
     app.use(rotasContato);
     app.use(rotasEvento);
-    app.use(rotasOrganizacao)
+    app.use(rotasFuncionario);
+    app.use(rotasInscricao);
+    app.use(rotasOrganizacao);
+    app.use(rotasPessoa);
     
-
-    //add a rotas ao app
-     
-   
-
-
     return app;
 }
 
