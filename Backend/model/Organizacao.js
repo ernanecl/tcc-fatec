@@ -5,7 +5,7 @@ class Organizacao {
     return {
       consultarCnpj: "/organizacoes/cnpj/:cnpj",
       consultarNome: "/organizacoes/nome/:nome",
-      cadastrar: "/organizacoes/cadastro",
+      incluir: "/organizacoes/cadastro",
       alterar: "organizacoes/:email",
     };
   }

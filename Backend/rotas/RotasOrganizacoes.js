@@ -1,14 +1,18 @@
 const express = require("express");
+const router = express.Router();
 const OrganizacaoController = require("../controller/OrganizacaoController");
 const Organizacao = require("../model/Organizacao");
-
-const router = express.Router();
-const organizaoController = new OrganizacaoController();
 const rotas = new Organizacao().rotas();
 
-// router.get(rotas.consultarNome, organizaoController.consultaPorNome);
-// router.get(rotas.consultarCnpj, organizaoController.consultaPorCnpj);
-// router.post(rotas.cadastro, Organizacao.validacoes(), organizaoController.cadastro);
-// router.put(rotas.alterar, organizao.alterar);
+const organizaoController = new OrganizacaoController();
+
+router.route(rotas.consultarNome)
+    .get(organizaoController.listarPorNome);
+router.route(rotas.consultarCnpj)
+    .get(organizaoController.listarPorCnpj);
+router.route(rotas.incluir)
+    .post(Organizacao.validacoes(), organizaoController.cadastrar);
+router.route(rotas.alterar)
+    .put(organizaoController.atualizar);
 
 module.exports = router;

@@ -9,7 +9,7 @@ const organizacaoDao = new OrganizacaoDao();
 const usuarioController = new UsuarioController();
 
 class OrganizacaoController {
-  consultaPorNome(req, res){
+  listarPorNome(req, res){
     const nome = req.params.nome;
 
     organizacaoDao.listarPorNome(nome, (erro, resultado)=>{
@@ -22,7 +22,7 @@ class OrganizacaoController {
       verificarResultado(resultado, res);
     });
   }
-  consultaPorCnpj(req, res){
+  listarPorCnpj(req, res){
     const cnpj = req.params.cnpj;
 
     organizacaoDao.listarPorCnpj(cnpj, (erro, resultado) =>{
@@ -34,7 +34,7 @@ class OrganizacaoController {
       verificarResultado(resultado, res);
     });
   }
-  cadastro(req, res) {
+  cadastrar(req, res) {
     const organizacao = req.body;
 
     let erros = validationResult(req);
@@ -53,7 +53,7 @@ class OrganizacaoController {
       organizacaoDao.inserir(organizacao, (erro) => {
         if (erro) {
           console.log(erro);
-          res.send("Ocorreu um erro");
+          res.status(500).send("Ocorreu um erro");
         } else {
           console.log("Organização cadastrada!");
           res.status(201).send("Cadastrado com sucesso!");
@@ -61,7 +61,7 @@ class OrganizacaoController {
       });
     }
   }
-  alterar(req, res) {
+  atualizar(req, res) {
     const email = req.params.email;
     const valores = req.body;
 
@@ -74,7 +74,10 @@ class OrganizacaoController {
           res.status(500).send("Ocorreu um erro");
           return;
         }
-        //verificarAlteracao(resultado, res);
+        if (verificarAlteracao(res, resultado.changedRows)) {
+          console.log("Alterado com sucesso!");
+          res.status(200).send("Alterado com sucesso!");
+        }
       });
     }
   }

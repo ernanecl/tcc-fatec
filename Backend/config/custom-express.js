@@ -14,6 +14,7 @@ function Express(){
     app.use(rotasFuncionario);
     app.use(rotasContato);
     app.use(rotasEvento);
+    app.use(rotasOrganizacao)
     
 
     //add a rotas ao app
