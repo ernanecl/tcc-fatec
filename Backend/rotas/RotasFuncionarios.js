@@ -21,10 +21,10 @@ router.route(rotas.cadastrar)
 );
 router.route(rotas.alterar)
   .put(funcionarioController.alterar);
-// router.route(rotas.excluirRg)
-//   .delete(funcionarioController.excluirPorRg);
-// router.route(rotas.excluirCpf)
-//   .delete(funcionarioController.excluirPorCpf);
+router.route(rotas.excluirRg)
+  .delete(funcionarioController.excluirPorRg);
+router.route(rotas.excluirCpf)
+  .delete(funcionarioController.excluirPorCpf);
 
 //exportando o router
 module.exports = router;
