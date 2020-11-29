@@ -1,4 +1,4 @@
-const EventosDao = require("../dao/EventoDao");
+const EventoDao = require("../dao/EventoDao");
 const { validationResult } = require("express-validator");
 const moment = require("moment");
 const verificarAlteracao = require("../utils/verificarAlteracao");
@@ -87,7 +87,7 @@ class EventoController {
           console.log("Ocorreu um erro " + erro);
           res.status(500).send("Ocorreu um erro");
         } else {
-          verificarAlteracao(resultado, res);
+          //verificarAlteracao(resultado, res);
         }
       });
     } else {

@@ -2,61 +2,61 @@ const FuncionarioDao = require("../dao/FuncionarioDao");
 const { validationResult } = require("express-validator");
 const UsuarioController = require("./UsuarioController");
 const alterarRgCpf = require("../utils/alterarRgCpf");
+const verificarResultado = require("../utils/verificarResultado");
 const verificarAlteracao = require("../utils/verificarAlteracao");
-const verificarResultado= require("../utils/verificarResultado");
 const funcionarioDao = new FuncionarioDao();
 const usuarioController = new UsuarioController();
 
 class FuncionarioController {
-  consultaPorEmail(req, res){
+  consultaPorEmail(req, res) {
     const email = req.params.email;
 
-    funcionarioDao.listarPorEmail(email, (erro, resultado)=>{
-      if(erro){
-        console.log('Ocorreu um erro ' + erro);
-        res.status(500).send('Ocorreu um erro!');
+    funcionarioDao.listarPorEmail(email, (erro, resultado) => {
+      if (erro) {
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send("Ocorreu um erro!");
         return;
       }
       verificarResultado(resultado, res);
     });
   }
-  consultaPorNome(req, res){
+  consultaPorNome(req, res) {
     const nome = req.params.nome;
 
-    funcionarioDao.listarPorNome(nome, (erro, resultado)=>{
-      if(erro){
-        console.log('Ocorreu um erro ' + erro);
-        res.status(500).send('Ocorreu um erro!');
+    funcionarioDao.listarPorNome(nome, (erro, resultado) => {
+      if (erro) {
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send("Ocorreu um erro!");
         return;
       }
       verificarResultado(resultado, res);
     });
   }
-  consultaPorCpf(req, res){
+  consultaPorCpf(req, res) {
     const cpf = req.params.cpf;
 
-    funcionarioDao.listarPorCpf(cpf, (erro, resultado)=>{
-      if(erro){
-        console.log('Ocorreu um erro ' + erro);
-        res.status(500).send('Ocorreu um erro!');
+    funcionarioDao.listarPorCpf(cpf, (erro, resultado) => {
+      if (erro) {
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send("Ocorreu um erro!");
         return;
       }
       verificarResultado(resultado, res);
     });
   }
-  consultaPorCargo(req, res){
+  consultaPorCargo(req, res) {
     const cargo = req.params.cargo;
 
-    funcionarioDao(cargo, (erro, resultado)=>{
-      if(erro){
-        console.log('Ocorreu um erro ' + erro);
-        res.status(500).send('Ocorreu um erro!');
+    funcionarioDao(cargo, (erro, resultado) => {
+      if (erro) {
+        console.log("Ocorreu um erro " + erro);
+        res.status(500).send("Ocorreu um erro!");
         return;
       }
       verificarResultado(resultado, res);
     });
   }
-  
+
   cadastro(req, res) {
     const funcionario = req.body;
 
@@ -64,7 +64,7 @@ class FuncionarioController {
 
     //verificando se houve erro de validação
     if (!erros.isEmpty()) {
-      console.log("Ocorreram erros na validação " + erros);
+      console.log(erros);
       res.send("Erros de validação " + erros);
     } else {
       usuarioController.inserirUsuario(
@@ -87,44 +87,45 @@ class FuncionarioController {
   alterar(req, res) {
     const email = req.params.email;
     const valores = req.body;
-
+    console.log(email);
     if (alterarRgCpf(valores, res)) {
       return;
     } else {
       funcionarioDao.atualizar(email, valores, (erro, resultado) => {
+        console.log(resultado);
         if (erro) {
           console.log("Ocorreu um erro " + erro);
-          res.status(500).send("Ocorreu um erro");
+          res.send("Ocorreu um erro");
           return;
         }
-
-        verificarAlteracao(resultado, res);
+        if (verificarAlteracao(res, resultado.changedRows)) {
+          console.log("Alterado com sucesso!");
+          res.status(200).send("Alterado com sucesso!");
+        }
       });
     }
   }
 
-  excluirPorRg(req, res){
+  excluirPorRg(req, res) {
     const rg = req.params.rg;
 
-    funcionarioDao.deletarPorRG(rg, (erro, resultado)=>{
+    funcionarioDao.deletarPorRG(rg, (erro, resultado) => {
       if (erro) {
         console.log("Ocorreu um erro " + erro);
         res.status(500).send("Ocorreu um erro");
         return;
       }
-
     });
   }
-  excluirPorCpf(req, res){
+  excluirPorCpf(req, res) {
     const cpf = req.params.rg;
 
-    funcionarioDao.deletarPorCpf(cpf, (erro, resultado)=>{
+    funcionarioDao.deletarPorCpf(cpf, (erro, resultado) => {
       if (erro) {
         console.log("Ocorreu um erro " + erro);
         res.status(500).send("Ocorreu um erro");
         return;
       }
-      
     });
   }
 }

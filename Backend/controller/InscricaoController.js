@@ -60,7 +60,7 @@ class InscricaoController {
           console.log("Ocorreu algum erro");
           res.send("Ocorreu algum erro");
         } else {
-          verificarAlteracao(resultado, res);
+          //verificarAlteracao(resultado, res);
         }
       });
     }

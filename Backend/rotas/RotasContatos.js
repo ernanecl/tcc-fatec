@@ -6,5 +6,5 @@ const router = express.Router();
 const rotas = new Contato().rotas();
 const contato = new ContatoController();
 
-router.post(rotas.cadastrar, Contato.validacoes(), contato.enviar);
+//router.post(rotas.cadastrar, Contato.validacoes(), contato.enviar);
 module.exports = router;

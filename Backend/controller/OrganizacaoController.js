@@ -74,7 +74,7 @@ class OrganizacaoController {
           res.status(500).send("Ocorreu um erro");
           return;
         }
-        verificarAlteracao(resultado, res);
+        //verificarAlteracao(resultado, res);
       });
     }
   }

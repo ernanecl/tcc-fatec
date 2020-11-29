@@ -56,7 +56,7 @@ class PessoasController {
           res.status(500).send("Ocorreu um erro");
           return;
         }
-        verificarAlteracao(result, res);
+        //verificarAlteracao(result, res);
       });
     }
   }

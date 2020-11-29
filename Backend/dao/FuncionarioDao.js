@@ -59,8 +59,8 @@ class FuncionarioDao {
 
   atualizar(email, valores, callback) {
     const sql = `
-            UPDATE pessoas SET ?
-            WHERE email = '${email}'
+            UPDATE funcionarios SET ?
+            WHERE email = ${JSON.stringify(email)}
         `;
 
     conexao.query(sql, valores, callback);
