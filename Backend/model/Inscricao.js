@@ -32,13 +32,12 @@ class Inscricao {
       check("horaFinal")
         .notEmpty()
         .withMessage("A hora final precisa ser preenchida"),
-      ,
       check("disponibilidade")
         .notEmpty()
         .withMessage("A disponibilidade precisa ser preenchida"),
       check("descricao")
         .notEmpty()
-        .withMessage("A descrição precisa ser preenchida"),
+        .withMessage("A descrição precisa ser preenchida")
     ];
   }
 }

@@ -9,7 +9,7 @@ const inscricaoController = new InscricaoController();
 router.route(rotas.consultar)
     .get(inscricaoController.listar);
 router.route(rotas.incluir)
-     .post(inscricaoController.cadastrar);
+     .post(Inscricao.validacoes(),inscricaoController.cadastrar);
 router.route(rotas.alterar)
     .put(inscricaoController.atualizar);
 
