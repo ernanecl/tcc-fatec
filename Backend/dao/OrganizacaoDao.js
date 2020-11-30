@@ -4,7 +4,7 @@ class OrganizacaoDao {
   listarPorNome(nome, callback){
     const sql = `
       SELECT nome, end, bairro, cidade, cep, fone, email, cnpj
-      FROM pessoas
+      FROM organizacoes
       WHERE lcase(nome LIKE '%${nome}%')
     `;
 
@@ -13,16 +13,16 @@ class OrganizacaoDao {
   listarPorCnpj(cnpj, callback){
     const sql = `
       SELECT nome, end, bairro, cidade, cep, fone, email, cnpj
-      FROM pessoas
-      WHERE cpf = '${nome}'
+      FROM organizacoes
+      WHERE cnpj = '${cnpj}'
     `;
 
     conexao.query(sql, callback);
   }
   inserir(organizacao, callback) {
     const sql = `
-            INSERT INTO organizacoes(nome, end, bairro, cidade, cep, fone, email, cnpj, senha)
-            VALUES (?,?,?,?,?,?,?,?,?)
+            INSERT INTO organizacoes(nome, end, bairro, cidade, cep, fone, email, cnpj, senha, finsLucrativos)
+            VALUES (?,?,?,?,?,?,?,?,?,?)
         `;
     conexao.query(
       sql,
@@ -36,6 +36,7 @@ class OrganizacaoDao {
         organizacao.email,
         organizacao.cnpj,
         organizacao.senha,
+        organizacao.finsLucrativos
       ],
       callback
     );
