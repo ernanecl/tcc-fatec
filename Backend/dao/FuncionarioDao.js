@@ -9,12 +9,21 @@ class FuncionarioDao {
     `;
     conexao.query(sql, callback);
   }
+  listarPorCargo(cargo, callback) {
+    const sql = `
+      SELECT nome, rg, cpf, cargo, end, bairro, cidade, cep, fone, email
+      FROM funcionarios
+      WHERE (cargo LIKE '%${cargo}%')
+    `;
+    conexao.query(sql, callback);
+  }
   listarPorNome(nome, callback) {
     const sql = `
       SELECT nome, rg, cpf, cargo, end, bairro, cidade, cep, fone, email
       FROM funcionarios
-      WHERE lcase(nome LIKE '%${nome}%')
+      WHERE (nome LIKE '%${nome}%')
     `;
+    console.log(sql);
     conexao.query(sql, callback);
   }
   listarPorCpf(cpf, callback) {
@@ -22,14 +31,6 @@ class FuncionarioDao {
       SELECT nome, rg, cpf, cargo, end, bairro, cidade, cep, fone, email
       FROM funcionarios
       WHERE cpf = '${cpf}'
-    `;
-    conexao.query(sql, callback);
-  }
-  listarPorNome(cargo, callback) {
-    const sql = `
-      SELECT nome, rg, cpf, cargo, end, bairro, cidade, cep, fone, email
-      FROM funcionarios
-      WHERE lcase(cargo LIKE '%${cargo}%')
     `;
     conexao.query(sql, callback);
   }
@@ -68,7 +69,7 @@ class FuncionarioDao {
 
   deletarPorRG(rg, callback) {
     const sql = `
-            DELETE funcionarios
+            DELETE FROM funcionarios
             WHERE rg = '${rg}'
         `;
 
@@ -76,8 +77,8 @@ class FuncionarioDao {
   }
   deletarPorCpf(cpf, callback) {
     const sql = `
-            DELETE funcionarios
-            WHERE cpf = '${cpf}'
+            DELETE FROM funcionarios
+            WHERE cpf = ${JSON.stringify(cpf)}
         `;
 
     conexao.query(sql, callback);

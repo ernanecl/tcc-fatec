@@ -4,6 +4,7 @@ const UsuarioController = require("./UsuarioController");
 const alterarRgCpf = require("../utils/alterarRgCpf");
 const verificarResultado = require("../utils/verificarResultado");
 const verificarAlteracao = require("../utils/verificarAlteracao");
+const verificarExclusao = require("../utils/verificarExclusao");
 const funcionarioDao = new FuncionarioDao();
 const usuarioController = new UsuarioController();
 
@@ -29,6 +30,7 @@ class FuncionarioController {
         res.status(500).send("Ocorreu um erro!");
         return;
       }
+      console.log(resultado);
       verificarResultado(resultado, res);
     });
   }
@@ -47,7 +49,7 @@ class FuncionarioController {
   listarPorCargo(req, res) {
     const cargo = req.params.cargo;
 
-    funcionarioDao(cargo, (erro, resultado) => {
+    funcionarioDao.listarPorCargo(cargo, (erro, resultado) => {
       if (erro) {
         console.log("Ocorreu um erro " + erro);
         res.status(500).send("Ocorreu um erro!");
@@ -115,16 +117,24 @@ class FuncionarioController {
         res.status(500).send("Ocorreu um erro");
         return;
       }
+        if(verificarExclusao(res, resultado.affectedRows)){
+          console.log("Excluído com sucesso!");
+          res.status(200).send("Excluído com sucesso!");
+        }
     });
   }
   removerPorCpf(req, res) {
-    const cpf = req.params.rg;
+    const cpf = req.params.cpf;
 
     funcionarioDao.deletarPorCpf(cpf, (erro, resultado) => {
       if (erro) {
         console.log("Ocorreu um erro " + erro);
         res.status(500).send("Ocorreu um erro");
         return;
+      }
+      if(verificarExclusao(res, resultado.affectedRows)){
+        console.log("Excluído com sucesso!");
+        res.status(200).send("Excluído com sucesso!");
       }
     });
   }
