@@ -14,7 +14,18 @@ class PessoasDao {
             INSERT INTO pessoas(nome, rg, cpf, end, bairro, cidade, cep, fone, email, senha)
             VALUES(?,?,?,?,?,?,?,?,?,?)
         `;
-    conexao.query(sql, callback);
+    conexao.query(sql, [
+      pessoa.nome, 
+      pessoa.rg,
+      pessoa.cpf,
+      pessoa.end,
+      pessoa.bairro, 
+      pessoa.cidade,
+      pessoa.cep,
+      pessoa.fone, 
+      pessoa.email,
+      pessoa.senha
+    ], callback);
   }
 
   atualizar(email, valores, callback) {
