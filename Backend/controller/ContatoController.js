@@ -10,8 +10,8 @@ class ContatoController {
 
     let erros = validationResult(req);
     if (!erros.isEmpty()) {
-      console.log(erros);
-      res.send("Erros de validação " + erros);
+      console.log('Erros de validação ' + JSON.stringify(erros));
+      res.send("Erros de validação " + JSON.stringify(erros));
     } else {
       contatoDao.inserir(contato, (erro) => {
         if (erro) {
