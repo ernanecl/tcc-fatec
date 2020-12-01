@@ -27,8 +27,8 @@ class PessoasController {
     let erros = validationResult(req);
     //verificando se houve erro de validação
     if (!erros.isEmpty()) {
-      console.log("Ocorreram erros na validação " + erros);
-      res.send("Erros de validação " + erros);
+      console.log("Ocorreram erros na validação " + JSON.stringify(erros));
+      res.send("Erros de validação " + JSON.stringify(erros));
     } else {
       //Fazendo a inserção de pessoa na tabela de usuário
       usuarioController.inserirUsuario(pessoa.email, pessoa.senha, "NÃO");//Não para dizer que não é funcionário
