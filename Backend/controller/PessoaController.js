@@ -30,7 +30,8 @@ class PessoasController {
       console.log("Ocorreram erros na validação " + erros);
       res.send("Erros de validação " + erros);
     } else {
-      usuarioController.inserirUsuario(pessoa.email, pessoa.senha, "NÃO");
+      //Fazendo a inserção de pessoa na tabela de usuário
+      usuarioController.inserirUsuario(pessoa.email, pessoa.senha, "NÃO");//Não para dizer que não é funcionário
       //inserindo o pessoa na tabela de pessoas
       pessoaDao.inserir(pessoa, (erro) => {
         if (erro) {
@@ -46,7 +47,7 @@ class PessoasController {
   atualizar(req, res) {
     const email = req.params.email;
     const valores = req.body;
-
+    //Verificando se está tentando alterar rg ou cpf
     if (alterarRgCpf(valores, res)) {
       return;
     } else {

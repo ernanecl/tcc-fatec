@@ -18,7 +18,7 @@ class OrganizacaoController {
         res.status(500).send('Ocorreu um erro');
         return;
       }
-
+      //Fazendo a verificação se trouxe algum resultado ou não
       verificarResultado(resultado, res);
     });
   }
@@ -64,7 +64,7 @@ class OrganizacaoController {
   atualizar(req, res) {
     const email = req.params.email;
     const valores = req.body;
-
+    //Verificando se está tentando alterar rg ou cpf
     if (alterarRgCpf(valores, res)) {
       return;
     } else {
@@ -74,6 +74,7 @@ class OrganizacaoController {
           res.status(500).send("Ocorreu um erro");
           return;
         }
+        //Verificando se houve alguma alteração na tabela
         if (verificarAlteracao(res, resultado.changedRows)) {
           console.log("Alterado com sucesso!");
           res.status(200).send("Alterado com sucesso!");

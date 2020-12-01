@@ -18,6 +18,7 @@ class FuncionarioController {
         res.status(500).send("Ocorreu um erro!");
         return;
       }
+      //Verificando se houve algum resultado a busca
       verificarResultado(resultado, res);
     });
   }
@@ -89,7 +90,8 @@ class FuncionarioController {
   atualizar(req, res) {
     const email = req.params.email;
     const valores = req.body;
-    console.log(email);
+    
+    //Verificando se está tentando alterar rg ou cpf
     if (alterarRgCpf(valores, res)) {
       return;
     } else {
@@ -100,6 +102,7 @@ class FuncionarioController {
           res.send("Ocorreu um erro");
           return;
         }
+        //Verificando alteração na tabela
         if (verificarAlteracao(res, resultado.changedRows)) {
           console.log("Alterado com sucesso!");
           res.status(200).send("Alterado com sucesso!");
@@ -132,6 +135,7 @@ class FuncionarioController {
         res.status(500).send("Ocorreu um erro");
         return;
       }
+      //Verificando se realmente algo foi deletado
       if(verificarExclusao(res, resultado.affectedRows)){
         console.log("Excluído com sucesso!");
         res.status(200).send("Excluído com sucesso!");

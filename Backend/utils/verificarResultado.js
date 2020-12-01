@@ -1,3 +1,5 @@
+//Verificando se a busca trouxe algum resultado ou não
+//Para o caso de estar buscando por algo que não existe no banco
 function verificarResultado(resultado, res){
     if(resultado.length != 0){
         console.log("Busca realizada com sucesso!");
