@@ -5,6 +5,7 @@ const alterarRgCpf = require("../utils/alterarRgCpf");
 const verificarResultado = require("../utils/verificarResultado");
 const verificarAlteracao = require("../utils/verificarAlteracao");
 const verificarExclusao = require("../utils/verificarExclusao");
+const formatarMascaras = require("../utils/formatarMascaras");
 const funcionarioDao = new FuncionarioDao();
 const usuarioController = new UsuarioController();
 
@@ -62,7 +63,8 @@ class FuncionarioController {
 
   cadastrar(req, res) {
     const funcionario = req.body;
-
+    let formatado = formatarMascaras(funcionario);
+    
     const erros = validationResult(req);
 
     //verificando se houve erro de validação
@@ -76,7 +78,7 @@ class FuncionarioController {
         "SIM"
       );
       //inserindo o funcionário na tabela de funcionários
-      funcionarioDao.inserir(funcionario, (erro) => {
+      funcionarioDao.inserir(formatado, (erro) => {
         if (erro) {
           console.log(erro);
         } else {
