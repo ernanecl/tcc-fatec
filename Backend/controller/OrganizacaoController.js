@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 const alterarRgCpf = require("../utils/alterarRgCpf");
 const verificarAlteracao = require("../utils/verificarAlteracao");
 const verificarResultado = require("../utils/verificarResultado");
-
+const formatarMascaras = require("../utils/formatarMascaras");
 const organizacaoDao = new OrganizacaoDao();
 const usuarioController = new UsuarioController();
 
@@ -36,7 +36,7 @@ class OrganizacaoController {
   }
   cadastrar(req, res) {
     const organizacao = req.body;
-
+    let formatado = formatarMascaras(organizacao);
     let erros = validationResult(req);
     //verificando se houve erro de validação
     if (!erros.isEmpty()) {
@@ -50,7 +50,7 @@ class OrganizacaoController {
         "NÃO"
       );
       //inserindo o organização na tabela de organizações
-      organizacaoDao.inserir(organizacao, (erro) => {
+      organizacaoDao.inserir(formatado, (erro) => {
         if (erro) {
           console.log(erro);
           res.status(500).send("Ocorreu um erro");

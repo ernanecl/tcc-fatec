@@ -4,6 +4,7 @@ const { validationResult } = require("express-validator");
 const alterarRgCpf = require("../utils/alterarRgCpf");
 const verificarAlteracao = require("../utils/verificarAlteracao");
 const verificarResultado = require("../utils/verificarResultado");
+const formatarMascaras = require("../utils/formatarMascaras");
 
 const pessoaDao = new PessoaDao();
 const usuarioController = new UsuarioController();
@@ -23,7 +24,7 @@ class PessoasController {
   }
   cadastrar(req, res) {
     const pessoa = req.body;
-
+    let formatado = formatarMascaras(pessoa);
     let erros = validationResult(req);
     //verificando se houve erro de validação
     if (!erros.isEmpty()) {
@@ -33,7 +34,7 @@ class PessoasController {
       //Fazendo a inserção de pessoa na tabela de usuário
       usuarioController.inserirUsuario(pessoa.email, pessoa.senha, "NÃO");//Não para dizer que não é funcionário
       //inserindo o pessoa na tabela de pessoas
-      pessoaDao.inserir(pessoa, (erro) => {
+      pessoaDao.inserir(formatado, (erro) => {
         if (erro) {
           console.log(erro);
         } else {
