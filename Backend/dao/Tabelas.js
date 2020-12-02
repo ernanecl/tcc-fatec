@@ -171,7 +171,7 @@ class Tabelas {
         email VARCHAR(200) NOT NULL, 
         senha VARCHAR(30) NOT NULL, 
         identificacao VARCHAR(15) NOT NULL, 
-        ehFuncionario VARCHAR(3) NOT NULL,
+        ehFuncionario BIT NOT NULL,
         PRIMARY KEY (email)
       )
     `;

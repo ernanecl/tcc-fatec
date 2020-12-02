@@ -72,22 +72,26 @@ class FuncionarioController {
       console.log('Erros de validação ' + JSON.stringify(erros));
       res.send("Erros de validação " + erros);
     } else {
-      usuarioController.inserirUsuario(
-        funcionario.email,
-        funcionario.senha,
-        formatado.cpf,
-        "SIM",
-        funcionarioDao
-      );
-      //inserindo o funcionário na tabela de funcionários
-      funcionarioDao.inserir(formatado, (erro) => {
-        if (erro) {
-          console.log(erro);
-        } else {
-          console.log("Funcionário cadastrado!");
-          res.status(201).send("Cadastrado com sucesso!");
-        }
-      });
+      if(verificarExistencia(formatado) ==1){
+        usuarioController.inserirUsuario(
+          funcionario.email,
+          funcionario.senha,
+          formatado.cpf,
+          1
+        );
+        //inserindo o funcionário na tabela de funcionários
+        funcionarioDao.inserir(formatado, (erro) => {
+          if (erro) {
+            console.log(erro);
+          } else {
+            console.log("Funcionário cadastrado!");
+            res.status(201).send("Cadastrado com sucesso!");
+          }
+        });
+      }else{
+        res.send("Não foi possivel cadastrar, info duplicada!");
+      }
+     
     }
   }
 

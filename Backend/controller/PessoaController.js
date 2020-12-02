@@ -13,7 +13,7 @@ class PessoasController {
   listar(req, res) {
     const cpf = req.params.cpf;
 
-    pessoaDao.listar(cpf, (erro, resultado) => {
+    pessoaDao.listarPorCpf(cpf, (erro, resultado) => {
       if (erro) {
         console.log("Ocorreu um erro " + erro);
         res.status(500).send("Ocorreu um erro");
@@ -32,7 +32,7 @@ class PessoasController {
       res.send("Erros de validação " + JSON.stringify(erros));
     } else {
       //Fazendo a inserção de pessoa na tabela de usuário
-      usuarioController.inserirUsuario(pessoa.email, pessoa.senha, formatado.cpf, "NÃO",pessoaDao);//Não para dizer que não é funcionário
+      usuarioController.inserirUsuario(pessoa.email, pessoa.senha, formatado.cpf, 0);//Não para dizer que não é funcionário
       //inserindo o pessoa na tabela de pessoas
       pessoaDao.inserir(formatado, (erro) => {
         if (erro) {

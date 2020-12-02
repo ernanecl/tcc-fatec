@@ -1,16 +1,13 @@
 const conexao = require("../config/conexao");
 
 class PessoasDao {
-  listar(cpf, callback) {
+  listarPorCpf(cpf, callback) {
     const sql = `
       SELECT nome, end, bairro, cidade, cep, fone, email
       FROM pessoas
       WHERE cpf = '${cpf}'
     `;
     conexao.query(sql, callback);
-  }
-  listarPorCpf(){
-    
   }
   
   inserir(pessoa, callback) {

@@ -28,6 +28,8 @@ class InscricaoController {
     inscricao.dataFinal = moment(inscricao.dataFinal, "DD/MM/YYYY").format(
       "YYYY-MM-DD"
     );
+    inscricao.horaInicio = moment(inscricao.horaInicio, 'hh:mm').format('hh:mm:ss');
+    inscricao.horaFinal = moment(inscricao.horaFinal, 'hh:mm:ss').format('hh:mm:ss');
 
     let erros = validationResult(req);
 
