@@ -1,12 +1,12 @@
 const conexao = require("../config/conexao");
 
 class UsuarioDao {
-  inserir(email, senha, string, callback) {
+  inserir(email, senha, identificacao, string, callback) {
     const sql = `
-            INSERT INTO usuarios(email, senha, ehFuncionario)
+            INSERT INTO usuarios(email, senha, identificacao, ehFuncionario)
             VALUES(?,?,?)
         `;
-    conexao.query(sql, [email, senha, string], callback);
+    conexao.query(sql, [email, senha, identificacao, string], callback);
   }
   atualizar(email, valores, callback){
     const sql = `

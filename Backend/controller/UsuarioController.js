@@ -3,6 +3,9 @@ const usuarioDao = new UsuarioDao();
 
 class UsuarioController {
   inserirUsuario(email, senha, string) {
+    if(string.toUpperCase() == 'NÃO'){
+      
+    }
     usuarioDao.inserir(email, senha, string, (erro) => {
       if (erro) {
         console.log(erro);

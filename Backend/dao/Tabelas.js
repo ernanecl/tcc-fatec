@@ -170,6 +170,7 @@ class Tabelas {
       CREATE TABLE IF NOT EXISTS usuarios(
         email VARCHAR(200) NOT NULL, 
         senha VARCHAR(30) NOT NULL, 
+        identificacao VARCHAR(15) NOT NULL, 
         ehFuncionario VARCHAR(3) NOT NULL,
         PRIMARY KEY (email)
       )

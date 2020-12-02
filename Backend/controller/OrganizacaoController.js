@@ -47,6 +47,7 @@ class OrganizacaoController {
       usuarioController.inserirUsuario(
         organizacao.email,
         organizacao.senha,
+        formatado.cpnj,
         "NÃO"
       );
       //inserindo o organização na tabela de organizações

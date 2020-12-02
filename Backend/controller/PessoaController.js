@@ -32,7 +32,7 @@ class PessoasController {
       res.send("Erros de validação " + JSON.stringify(erros));
     } else {
       //Fazendo a inserção de pessoa na tabela de usuário
-      usuarioController.inserirUsuario(pessoa.email, pessoa.senha, "NÃO");//Não para dizer que não é funcionário
+      usuarioController.inserirUsuario(pessoa.email, pessoa.senha, formatado.cpf, "NÃO");//Não para dizer que não é funcionário
       //inserindo o pessoa na tabela de pessoas
       pessoaDao.inserir(formatado, (erro) => {
         if (erro) {
