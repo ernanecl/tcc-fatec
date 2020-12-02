@@ -13,9 +13,10 @@ class EventoDao {
 
   //buscando por data
   listaPorData(data, callback) {
+    console.log(data);
     const sql = `
             SELECT * FROM eventos
-            WHERE data = ${data}
+            WHERE data = '${data}'
         `;
   
     conexao.query(sql, callback);
@@ -33,7 +34,7 @@ class EventoDao {
 
   inserir(evento, callback) {
     const sql = `
-      INSERT INTO eventos(nome, organizador, data, imagem, hora, inscricao, ficha, tempo, descricao, categoria, visibilidade, termo)
+      INSERT INTO eventos(nome, organizador, data, imagem, hora, inscricao, ficha, duracao, descricao, categoria, visibilidade, termo)
       VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
     `;
     conexao.query(
@@ -46,7 +47,7 @@ class EventoDao {
         evento.hora,
         evento.inscricao,
         evento.ficha,
-        evento.tempo,
+        evento.duracao,
         evento.descricao,
         evento.categoria,
         evento.visibilidade,

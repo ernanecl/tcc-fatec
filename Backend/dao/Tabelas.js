@@ -117,15 +117,15 @@ class Tabelas {
         nome VARCHAR(200) NOT NULL,
         organizador VARCHAR(200) NOT NULL,  
         data DATE NOT NULL,
-        imagem LONGBLOB, 
-        hora VARCHAR(4) NOT NULL, 
+        imagem LONGBLOB NULL, 
+        hora TIME NOT NULL, 
         inscricao VARCHAR(3) NOT NULL,  
         ficha text NOT NULL, 
         duracao VARCHAR(10) NOT NULL, 
         descricao text NOT NULL, 
         categoria VARCHAR(200) NOT NULL, 
         visibilidade VARCHAR(100) NOT NULL,
-        termo LONGBLOB,
+        termo LONGBLOB NULL,
         PRIMARY KEY(cod)
     )
       `;

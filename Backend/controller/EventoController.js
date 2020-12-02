@@ -20,8 +20,7 @@ class EventoController {
   }
 
   listarPorData(req, res) {
-    const data = req.params.data;
-
+    let data = req.params.data;
     //usando o moment para formatar a data recebida
     data = moment(data, "DD-MM-YYYY").format("YYYY-MM-DD");
     eventoDao.listaPorData(data, (erro, resultado) => {
@@ -50,7 +49,8 @@ class EventoController {
   cadastrar(req, res) {
     const evento = req.body;
     evento.data = moment(evento.data, "DD/MM/YYYY").format("YYYY-MM-DD");
-
+    evento.hora = moment(evento.hora, 'HH:mm').format('HH:mm:ss');
+    
     let erros = validationResult(req);
 
     if (!erros.isEmpty()) {
@@ -71,7 +71,9 @@ class EventoController {
 
   atualizar(req, res) {
     const nome = req.params.nome;
+    console.log(nome);
     const organizador = req.params.organizador;
+    console.log(organizador);
     const valores = req.body;
 
     //verificando se é algum desses campos que estão sendo alterados
