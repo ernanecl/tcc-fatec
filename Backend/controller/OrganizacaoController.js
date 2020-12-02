@@ -48,7 +48,8 @@ class OrganizacaoController {
         organizacao.email,
         organizacao.senha,
         formatado.cpnj,
-        "NÃO"
+        "NÃO",
+        organizacaoDao
       );
       //inserindo o organização na tabela de organizações
       organizacaoDao.inserir(formatado, (erro) => {

@@ -9,6 +9,10 @@ class PessoasDao {
     `;
     conexao.query(sql, callback);
   }
+  listarPorCpf(){
+    
+  }
+  
   inserir(pessoa, callback) {
     const sql = `
             INSERT INTO pessoas(nome, rg, cpf, end, bairro, cidade, cep, fone, email, senha)

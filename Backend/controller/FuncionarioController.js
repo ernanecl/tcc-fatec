@@ -76,7 +76,8 @@ class FuncionarioController {
         funcionario.email,
         funcionario.senha,
         formatado.cpf,
-        "SIM"
+        "SIM",
+        funcionarioDao
       );
       //inserindo o funcionário na tabela de funcionários
       funcionarioDao.inserir(formatado, (erro) => {
